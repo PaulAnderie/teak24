@@ -1,0 +1,388 @@
+{% if section.settings.footer_layout == 'footer-layout-1' %}
+<footer class="typo-footer {{section.settings.footer_layout }}">
+  <div class="container">
+    <div class="footer-top"> 
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <h3 class="module-title">{{ section.settings.footer_column_1_title }}</h3>
+          <ul class="content">
+            {% assign footerCol1 = section.settings.footer_column_1_title | handleize %}
+
+            {% for link in linklists[section.settings.footercol1].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <h3 class="module-title">{{ section.settings.footer_column_2_title }}</h3>
+          <ul class="content">
+            {% assign footerCol2 = section.settings.footer_column_2_title | handleize %}
+            {% for link in linklists[section.settings.footercol2].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+		<div class="col-md-3 col-sm-3 col-xs-12">
+          <h3 class="module-title">{{ section.settings.footer_column_3_title }}</h3>
+          <ul class="content">
+            {% assign footerCol1 = section.settings.footer_column_3_title | handleize %}
+
+            {% for link in linklists[section.settings.footercol3].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12">
+           <h3 class="module-title">{{ section.settings.footer_column_4_title }}</h3>
+          <ul class="content">
+            {% assign footerCol1 = section.settings.footer_column_4_title | handleize %}
+
+            {% for link in linklists[section.settings.footercol4].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="row">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          {% if section.settings.display_footer_address %}
+          <address>
+            {% if section.settings.footer_address_code %}
+            {{ section.settings.footer_address_code }}
+            {% endif%}
+          </address>
+          {% endif %}
+        </div>
+        <div class="col-sm-6 col-xs-12">
+          <div class="footer-icon">
+            {% if section.settings.display_footer_isocal != blank %}
+            {% if section.settings.footer_column_icon_title != blank %}
+            <h5>{{ section.settings.footer_column_icon_title }}</h5>
+            {% endif %}
+            <div class="footer-icon-share">
+              {% if section.settings.footer_column_4_icon_1 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_1 }}">
+                <i class="{{ section.settings.footer_column_4_icon_1 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_2 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_2 }}">
+                <i class="{{ section.settings.footer_column_4_icon_2 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_3 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_3 }}">
+                <i class="{{ section.settings.footer_column_4_icon_3 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_4 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_4 }}">
+                <i class="{{ section.settings.footer_column_4_icon_4 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_5 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_5 }}">
+                <i class="{{ section.settings.footer_column_4_icon_5 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_6 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_6 }}">
+                <i class="{{ section.settings.footer_column_4_icon_6 }}"></i>
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% endif %}
+{% if section.settings.footer_layout == 'footer-layout-2' %}
+<footer class="typo-footer {{section.settings.footer_layout }}">
+  <div class="container">
+    <div class="footer-top"> 
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 col-lg-offset-2">
+          <div class="images">
+             <img class="b-lazy slide-img" src="{{ section.settings.logo_footer_top | img_url: '360x360'}}" alt="">
+         
+          </div>
+          
+          {% if section.settings.footer_top_content != blank %}
+          <div class="content-text">
+            {{ section.settings.footer_top_content }}
+          </div>
+          {% endif %}
+          {% if section.settings.footercol1 != blank %}
+          <ul class="custom-link">
+            {% assign footerCol1 = section.settings.footer_column_1_title | handleize %}
+
+            {% for link in linklists[section.settings.footercol1].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          <div class="footer-icon">
+            {% if section.settings.display_footer_isocal != blank %}
+            {% if section.settings.footer_column_icon_title != blank %}
+            <h5>{{ section.settings.footer_column_icon_title }}</h5>
+            {% endif %}
+            <div class="footer-icon-share">
+              {% if section.settings.footer_column_4_icon_1 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_1 }}">
+                <i class="{{ section.settings.footer_column_4_icon_1 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_2 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_2 }}">
+                <i class="{{ section.settings.footer_column_4_icon_2 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_3 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_3 }}">
+                <i class="{{ section.settings.footer_column_4_icon_3 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_4 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_4 }}">
+                <i class="{{ section.settings.footer_column_4_icon_4 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_5 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_5 }}">
+                <i class="{{ section.settings.footer_column_4_icon_5 }}"></i>
+              </a>
+              {% endif %}
+              {% if section.settings.footer_column_4_icon_6 != blank %}
+              <a href="{{ section.settings.footer_column_4_icon_link_6 }}">
+                <i class="{{ section.settings.footer_column_4_icon_6 }}"></i>
+              </a>
+              {% endif %}
+            </div>
+            {% endif %}
+           
+           
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div class="footer-bottom">
+      {% if section.settings.display_footer_address %}
+      <address>
+        {% if section.settings.footer_address_code %}
+        {{ section.settings.footer_address_code }}
+        {% endif%}
+      </address>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+{% endif %}
+{% include 'message-modal' %}
+{% schema %}
+  {
+    "name": "Typo - Footer",
+    "settings": [
+
+      {
+        "type": "select",
+        "id": "footer_layout",
+        "label": "Footer Layout",
+        "options": [
+          {
+            "value": "footer-layout-1",
+            "label": "Footer Layout 1"
+          },
+          {
+            "value": "footer-layout-2",
+            "label": "Footer Layout 2"
+          }
+        ]
+      },
+	 {
+        "type": "header",
+        "content": "Footer col 1"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo_footer_top",
+        "label": "Footer Logo"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_top_content",
+        "label": "Footer Top Content",
+        "default": "text default"
+      },
+      {
+        "type": "header",
+        "content": "Footer Column"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_1_title",
+        "label": "Footer Column 1 Title",
+		"default": "Title 1"
+      },
+      {
+        "type": "link_list",
+        "id": "footercol1",
+        "label": "Link List Column 1"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_2_title",
+        "label": "Footer Column 2 Title",
+		"default": "Title 2"
+      },
+      {
+        "type": "link_list",
+        "id": "footercol2",
+        "label": "Link List Column 2"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_3_title",
+        "label": "Footer Column 3 Title",
+		"default": "Title 3"
+      },
+      {
+        "type": "link_list",
+        "id": "footercol3",
+        "label": "Link List Column 3"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_title",
+        "label": "Footer Column 4 Title",
+		"default": "Title 4"
+      },
+      {
+        "type": "link_list",
+        "id": "footercol4",
+        "label": "Link List Column 4"
+      },
+
+      {
+        "type": "header",
+        "content": "Footer Social "
+      },
+      {
+        "type": "checkbox",
+        "id": "display_footer_isocal",
+        "label": "Enable Footer Social ?"
+      },
+
+      {
+        "type": "text",
+        "id": "footer_column_icon_title",
+        "label": "Social Title"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_1",
+        "label": "icon 1",
+        "default": "fa fa-rocket",
+        "info": "add class of font icon"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_link_1",
+        "label": "Link Icon 1",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_2",
+        "label": "icon 2",
+        "default": "fa fa-rocket",
+        "info": "add class of font icon"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_link_2",
+        "label": "Link Icon 2",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_3",
+        "label": "icon 3",
+        "default": "fa fa-rocket",
+        "info": "add class of font icon"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_link_3",
+        "label": "Link Icon 3",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_4",
+        "label": "icon 4",
+        "default": "fa fa-rocket",
+        "info": "add class of font icon"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_link_4",
+        "label": "Link Icon 4",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_5",
+        "label": "icon 5",
+        "default": "fa fa-rocket",
+        "info": "add class of font icon"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_link_5",
+        "label": "Link Icon 5",
+        "default": "#"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_6",
+        "label": "icon 6",
+        "default": "fa fa-rocket",
+        "info": "add class of font icon"
+      },
+      {
+        "type": "text",
+        "id": "footer_column_4_icon_link_6",
+        "label": "Link Icon 6",
+        "default": "#"
+      },
+      {
+        "type": "header",
+        "content": "Footer Address"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_footer_address",
+        "label": "Show Footer Address?"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_address_code",
+        "label": "Footer Address Code"
+      }
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

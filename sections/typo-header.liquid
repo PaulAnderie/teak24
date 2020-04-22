@@ -1,0 +1,450 @@
+{% if section.settings.header_layout != 'header_layout_3' %}
+<header id="header-content" class="{{section.settings.header_layout}}" style="background-color:#FDE12F; max-height:110px;">
+  <div class="header">
+    <div class="container">
+      <div class="header-inner">
+           <!-- Start Top Header -->
+         <div class="row" style="padding-top:10px; padding-right:10%;" id="header-top-cart">
+             <div class="" id="header-top-custom-link">
+                <div class="header-custom-link-desktop">
+                   <div class="desktop-currency">
+                       {% include 'new-currency-top' %}
+                   </div>
+                   <div class="login-custtomer">
+                     {% if shop.customer_accounts_enabled %}
+                   {% if customer %}
+                       {{ 'Logout' | customer_logout_link }}
+                   {% else %}
+                       <a href="/account/login">{{'typo_header.custom_link_login' | t }}</a>
+                   {% endif %}
+                     {% endif %}
+                   </div>
+                   <div class="wishlists">
+                     <a href="/pages/wunschliste" title="My Wishlist"><i class="fa fa-heart-o"></i></a>
+                   </div>
+               </div>
+               <div class="header-links">
+                 <div class="icons"></div>
+                 <div class="cusstom-link">
+                   {% include 'new-currency-top' %}
+                   {% if shop.customer_accounts_enabled %}
+                   {% if customer %}
+                   <ul class="customer-links">
+                     {% if settings.enable_wishlist %}
+                     <li>
+                       <a href="/pages/wishlist" title="My Wishlist"> {{'typo_header.custom_link_wishlist' | t }}</a>
+                     </li>
+                     {% endif %}
+                     <li>
+                       <a href="/checkout"><span>{{'typo_header.checkout' | t }}</span></a>
+                     </li>
+                     <li>
+                       {{ 'Logout' | customer_logout_link }}
+                     </li>
+                     <li>
+                       <a href="/account">{{'typo_header.custom_link_account' | t }}</a>
+                     </li>
+                   </ul>
+                   {% else %}
+                   <ul class="customer-links">
+                     {% if settings.enable_wishlist %}
+                     <li>
+                       <a href="/pages/wishlist" title="My Wishlist"> {{'typo_header.custom_link_wishlist' | t }}</a>
+                     </li>
+                     {% endif %}
+                     <li>
+                       <a href="/checkout"><span>{{'typo_header.checkout' | t }}</span></a>
+                     </li>
+                     <li>
+                       <a href="/account/login">{{'typo_header.custom_link_login' | t }}</a>
+                     </li>
+                     <li>
+                       {% if shop.customer_accounts_optional %}
+                       <a href="/account/register">{{'typo_header.custom_link_create_account' | t }}</a>
+                       {% endif %}
+                     </li>
+
+                   </ul>
+                   {% endif %}
+
+               {% endif %}
+                 </div>
+
+               </div>
+             </div>
+                 <div class="typo-header-cart">
+                       <!--%include 'customer_links' %-->
+                   <a href="#" id="cartToggle">
+                     <span class="text-cart">{{'typo_header.cart_text' | t }}</span>
+                     <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
+                     <span id="cart-count"><em>(</em>{{ cart.item_count }}<em>)</em></span>
+                   </a>
+                   <div id="dropdown-cart">
+                     <p class="close-cart"><i class="lnr lnr-cross"></i></p>
+                     <h3>{{'typo_header.mini_cart' | t }} </h3>
+                         <div class="cart-empty">
+                         <p>{{'typo_header.no_product' | t }}</p>
+                         </div>
+                            <div class="mini_cart_header">
+                               <ol class="cart-list">
+                                 {% for item in cart.items %}
+                                 <li class="item" id="cart-item-{{item.id}}">
+                                   <a href="{{item.url}}" title="{{item.title}}" class="product-image"><img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}"></a>
+                                   <div class="product-inner">
+
+                                     <p class="product-name"><a href="{{item.url}}">{{ item.product.title }}</a></p>
+                                     <div class="option">
+                                       {% if item.product.variants.size != 0 %}
+                                       {% unless item.variant.title contains 'Default' %}
+                                       <small>{{ item.variant.title }}</small>
+                                       {% endunless %}
+                                       {% endif %}
+                                     </div>
+                                     <div class="cart-collateral"><span class="price">{{item.price | money}}</span> x {{item.quantity}}</div>
+                                     <a href="javascript:void(0)" title="Remove This Item" class="btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                   </div>
+                                 </li>
+                                 {% endfor %}
+                               </ol>
+                               <div class="summary">
+                                 <p class="total">
+                                   <span >{{'typo_header.total' | t }}:</span>
+                                   <span class="price">{{cart.total_price | money}}</span>
+                                 </p>
+                               </div>
+                               <div class="actions">
+                                 <div class="view-cart"><a class="btn" href="/cart">{{'typo_header.viewcart' | t }}</a></div>
+                                 <button class="btn" onclick="window.location='/checkout'">{{'typo_header.checkout' | t }}</button>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                 {% if section.settings.show_header_search %}
+                 <div id="search-top">
+                   <div class="search-close">
+                     <i class="fa fa-times"></i>
+                   </div>
+                   <div class="icon-search">
+                     <i class="fa fa-search"></i>
+                   </div>
+                   <div class="search-form" style="display:none">
+
+                     {% include 'search-bar' %}
+                   </div>
+                 </div>
+                 {% endif %}
+
+         </div>
+         <!-- End Top Header -->
+         <!-- start Main-Header-->
+        <div class="row">
+           {% if section.settings.header_layout == 'header_layout_2' %}
+          <div class=" col-md-2 col-sm-3 col-xs-12 logo-container">
+            <div class="logo" style="postion:absolute; margin:-30px">
+              {% if section.settings.use_logo %}
+              <h1><a href="/"><img src="{{ section.settings.logo | img_url: 'x1024' }}" alt="{{ shop.name }}" /></a></h1>
+              {% if template == 'index' %}
+              <h1 style="display:none"><a href="/">{{ shop.name }}</a></h1>
+              {% endif %}
+              {% else %}
+              <h1><a href="/">{{ shop.name }}</a></h1>
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+          <div class="{% if section.settings.header_layout == 'header_layout_1' %} col-lg-10 col-md-5 col-sm-8 {% else %} col-lg-10 col-md-7 col-sm-8 {% endif %}col-xs-4" style="position:static">
+            <div class="top-menu" id="header-menu">
+              <div class="menu-top text-right">
+                <div class="toggle-menu">
+                  <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
+                    <i class="fa fa-bars accordion-show"></i>
+                  </button>
+                </div>
+                <div class="menu-action">{% include 'site-nav' %}</div>
+
+              </div>
+            </div>
+          </div>
+          {% if section.settings.header_layout == 'header_layout_1' %}
+          <div class=" col-md-2 col-sm-3 col-xs-12 logo-container">
+            <div class="logo">
+              {% if section.settings.use_logo %}
+              <h1><a href="/"><img src="{{ section.settings.logo | img_url: 'x1024' }}" alt="{{ shop.name }}" /></a></h1>
+              {% if template == 'index' %}
+              <h1 style="display:none"><a href="/">{{ shop.name }}</a></h1>
+              {% endif %}
+              {% else %}
+              <h1><a href="/">{{ shop.name }}</a></h1>ss
+              {% endif %}
+            </div>
+          </div>
+          {% endif %}
+           <!-- Old coloumn from Theme was added to top row be in top row
+          <div class=" {% if section.settings.header_layout == 'header_layout_1' %} col-md-5 col-sm-5 {% else %} col-lg-4 col-md-3 col-sm-4 {% endif %}col-xs-4" id="header-top-cart" >
+
+
+
+
+        </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+ {% else %}
+<header id="header-content" class="{{section.settings.header_layout}}">
+  <div class="headers">
+    <div class="container">
+      <div class="header-inner">
+        <div class="row">
+
+
+          <div class=" col-lg-4 col-md-4  hidden-sm hidden-xs logo-container">
+            <div class="header-text-left ">
+              {{ section.settings.show_header_text_left }}
+            </div>
+          </div>
+           <div class="toggle-menu">
+          <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
+            <i class="fa fa-bars accordion-show"></i>
+          </button>
+        </div>
+          <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4 logo-container">
+            <div class="logo" style="text-align:center;">
+              {% if section.settings.use_logo %}
+              <h1 style="text-align:center;"><a href="/"><img src="{{ section.settings.logo | img_url: 'x1024' }}" alt="{{ shop.name }}" /></a></h1>
+              {% if template == 'index' %}
+              <h1 style="display:none"><a href="/">{{ shop.name }}</a></h1>
+              {% endif %}
+              {% else %}
+              <h1><a href="/">{{ shop.name }}</a></h1>ss
+              {% endif %}
+            </div>
+          </div>
+
+          <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-4" id="header-top-cart" >
+
+            <div class="" id="header-top-custom-link">
+				<div class="header-custom-link-desktop">
+
+                  <div class="desktop-currency">
+                      {% include 'new-currency-top' %}
+                  </div>
+                  <div class="login-custtomer">
+                    {% if shop.customer_accounts_enabled %}
+                  {% if customer %}
+                      {{ 'Logout' | customer_logout_link }}
+                  {% else %}
+                      <a href="/account/login">{{'typo_header.custom_link_login' | t }}</a>
+                  {% endif %}
+                    {% endif %}
+                  </div>
+                  <div class="wishlists">
+                    <a href="/pages/wishlist" title="My Wishlist"><i class="fa fa-heart-o"></i></a>
+                  </div>
+
+              </div>
+
+              <div class="header-links">
+                <div class="icons"></div>
+                <div class="cusstom-link">
+                  {% include 'new-currency-top' %}
+                  {% if shop.customer_accounts_enabled %}
+                  {% if customer %}
+                  <ul class="customer-links">
+                    {% if settings.enable_wishlist %}
+                    <li>
+                      <a href="/pages/wishlist" title="My Wishlist"> {{'typo_header.custom_link_wishlist' | t }}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                      <a href="/checkout"><span>{{'typo_header.checkout' | t }}</span></a>
+                    </li>
+                    <li>
+                      {{ 'Logout' | customer_logout_link }}
+                    </li>
+                    <li>
+                      <a href="/account">{{'typo_header.custom_link_account' | t }}</a>
+                    </li>
+                  </ul>
+                  {% else %}
+                  <ul class="customer-links">
+                    {% if settings.enable_wishlist %}
+                    <li>
+                      <a href="/pages/wishlist" title="My Wishlist"> {{'typo_header.custom_link_wishlist' | t }}</a>
+                    </li>
+                    {% endif %}
+                    <li>
+                      <a href="/checkout"><span>{{'typo_header.checkout' | t }}</span></a>
+                    </li>
+                    <li>
+                      <a href="/account/login">{{'typo_header.custom_link_login' | t }}</a>
+                    </li>
+                    <li>
+                      {% if shop.customer_accounts_optional %}
+                      <a href="/account/register">{{'typo_header.custom_link_create_account' | t }}</a>
+                      {% endif %}
+                    </li>
+
+                  </ul>
+                  {% endif %}
+
+              {% endif %}
+                </div>
+              </div>
+            </div>
+
+              <!--%include 'customer_links' %-->
+
+              <a href="#" id="cartToggle">
+                <span class="text-cart">{{'typo_header.cart_text' | t }}</span>
+                <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
+                <span id="cart-count"><em>(</em>{{ cart.item_count }}<em>)</em></span>
+              </a>
+              <div id="dropdown-cart">
+                <p class="close-cart"><i class="lnr lnr-cross"></i></p>
+                <h3>{{'typo_header.mini_cart' | t }} </h3>
+                <div class="cart-empty">
+                  <p>{{'typo_header.no_product' | t }}</p>
+                </div>
+                <div class="mini_cart_header">
+                  <ol class="cart-list">
+                    {% for item in cart.items %}
+                    <li class="item" id="cart-item-{{item.id}}">
+                      <a href="{{item.url}}" title="{{item.title}}" class="product-image"><img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}"></a>
+                      <div class="product-inner">
+
+                        <p class="product-name"><a href="{{item.url}}">{{ item.product.title }}</a></p>
+                        <div class="option">
+                          {% if item.product.variants.size != 0 %}
+                          {% unless item.variant.title contains 'Default' %}
+                          <small>{{ item.variant.title }}</small>
+                          {% endunless %}
+                          {% endif %}
+                        </div>
+                        <div class="cart-collateral"><span class="price">{{item.price | money}}</span> x {{item.quantity}}</div>
+                        <a href="javascript:void(0)" title="Remove This Item" class="btn-remove"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ol>
+                  <div class="summary">
+                    <p class="total">
+                      <span >{{'typo_header.total' | t }}:</span>
+                      <span class="price">{{cart.total_price | money}}</span>
+                    </p>
+                  </div>
+                  <div class="actions">
+                    <div class="view-cart"><a class="btn" href="/cart">{{'typo_header.viewcart' | t }}</a></div>
+                    <button class="btn" onclick="window.location='/checkout'">{{'typo_header.checkout' | t }}</button>
+
+                  </div>
+
+                </div>
+              </div> <!-- End Top Header -->
+            </div>
+             {% if section.settings.show_header_search %}
+             <div id="search-top">
+              <div class="search-close">
+                <i class="fa fa-times"></i>
+              </div>
+              <div class="icon-search">
+                <i class="fa fa-search"></i>
+              </div>
+              <div class="search-form" style="display:none">
+
+                {% include 'search-bar' %}
+              </div>
+          </div>
+            {% endif %}
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="header-menu header">
+    <div class="top-menu container" id="header-menu">
+      <div class="logo-sticky">
+        <a href="/"><img src="{{ section.settings.logo-sticky | img_url: 'x1024' }}" alt="{{ shop.name }}" /></a>
+      </div>
+      <div class="menu-top text-right">
+
+        <div class="menu-action">{% include 'site-nav' %}</div>
+      </div>
+    </div>
+  </div>
+</header>
+{% endif %}
+
+
+
+{% schema %}
+{
+  "name": "Typo - Header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "header_layout",
+      "label": "Header Layout",
+      "options": [
+        {
+          "value": "header_layout_1",
+          "label": "Header Layout 1"
+        },
+        {
+          "value": "header_layout_2",
+          "label": "Header Layout 2"
+        },
+        {
+          "value": "header_layout_3",
+          "label": "Header Layout 3"
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "use_logo",
+      "label": "Use a custom logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header_logo_ticky",
+      "label": "Show Logo ticky?",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "logo-sticky",
+      "label": "Logo Sticky Image"
+    },
+    {
+      "type": "header",
+      "content": "Search"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header_search",
+      "label": "Show search form?",
+      "default": true
+    },
+    {
+      "type": "textarea",
+      "id": "show_header_text_left",
+      "label": "Show Text Left Header?",
+      "default": "Content"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

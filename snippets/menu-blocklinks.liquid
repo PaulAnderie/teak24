@@ -1,0 +1,47 @@
+<div class="row">
+  {% if linklists[mega_link_handle] != empty %}
+  {% assign mega_img_count = 0 %}
+  {% for bocklink_title in linklists[mega_link_handle].links %}
+  {% assign mega_img_count = mega_img_count | plus: 1 %}
+  <div class="col-sm-{{ settings[menu_col_links] }}">
+    {% capture mega_img_link %}mega_col_{{ intMega }}_{{mega_img_count}}.jpg{% endcapture %}
+    {% if hasimg %}
+    <div class="typo-mega-img">
+      <a href="{{ bocklink_title.url }}">
+        <img class="b-lazy" src="{{ mega_img_link | asset_url  }}" alt="">
+   
+      </a>
+    </div>
+    {% endif %}
+    <div class="mega-col-inner ">
+      <div class="menu-title">
+        <a href="{{ bocklink_title.url }}">
+          {% if settings.enable_multilang %}
+          <span class="lang1">{{ bocklink_title.title | split: '|' | first }}</span>
+          <span class="lang2">{{ bocklink_title.title | split: '|' | last }}</span>
+          {% else %}
+          {{ bocklink_title.title | split: '|' | first }}
+          {% endif %}   
+        </a>
+      </div>
+      <div class="widget-inner">
+        <ul class="nav-links">
+          {% if linklists[bocklink_title.handle] != empty %}
+          {% for sub_link in linklists[bocklink_title.handle].links %}
+          <li class="{% if sub_link.active %}active{% endif %}"><a href="{{ sub_link.url }}" title="{{ sub_link.title }}">
+            {% if settings.enable_multilang %}
+            <span class="lang1">{{ sub_link.title | split: '|' | first }}</span>
+            <span class="lang2">{{ sub_link.title | split: '|' | last }}</span>
+            {% else %}
+            {{ sub_link.title | split: '|' | first }}
+            {% endif %}                                         
+            </a></li>
+          {% endfor %}
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>

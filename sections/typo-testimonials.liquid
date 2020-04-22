@@ -1,0 +1,131 @@
+<div class="clearfix"></div>
+<div class="typo-testimonials" data-section-id="{{ section.id }}" data-section-type="quotes" style="margin:{{section.settings.home_quote_margin}}">
+  <div class="container">
+    {% if section.settings.title != blank %}
+    <div class="typo-heading">
+    <h3 class="module-title"><span>{{ section.settings.title | escape }}</span></h3>
+    </div>
+    {% endif %}
+    {% if section.blocks.size > 0 %}
+    <div class="typo-testimonials-wrapper">
+      <div class="testimonials-slider" id="testimonials-{{ section.id }}" data-count="{{ section.blocks.size }}">
+        {% for block in section.blocks %}
+        <div class=" testimonials-slide-item" {{ block.shopify_attributes }}>
+          <div class=" text-center">
+           <span class="quote-icon">
+              {% if block.settings.image != balnk %}
+              <img class="" src="{{ block.settings.image | img_url: '260x'  }}" alt="">
+            
+            {% else %}
+              {{ 'logo' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </span>
+            {% if block.settings.quote != blank %}
+            <div class="testimonials-content">{{ block.settings.quote }}</div>
+            {% endif %}
+            {% if block.settings.author != blank %}
+            <h4>{{ block.settings.author  }}</h4>
+            {% endif %}
+            {% if block.settings.email != blank %}
+            <p>{{ block.settings.email  }}</p>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <script>
+        $(document).ready(function() {
+          $("#testimonials-{{ section.id }}").owlCarousel({
+            itemsCustom : [
+            [320, 1],
+            [1600, 1]
+            ],
+            autoPlay : false,
+            stopOnHover : false,
+
+            lazyLoad : true,
+            lazyFollow : true,
+            lazyEffect : "fade",
+            pagination : false,
+
+            // Navigation
+            navigation : true,
+            navigationText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+            rewindNav : true,
+            scrollPerPage : false,
+            });
+        })
+      </script>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Typo - Testimonials",
+  "class": "index-section",
+  "max_blocks": 9,
+  "settings": [
+	{
+      "type": "text",
+      "id": "home_quote_margin",
+      "label": "Margin",
+      "default": "0px 0px 0px 0px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Testimonials"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Quote",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Text",
+          "default": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.</p>"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Author's name"
+        },
+        {
+          "type": "text",
+          "id": "email",
+          "label": "Email",
+          "default": "email"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Typo - Testimonials",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        },
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

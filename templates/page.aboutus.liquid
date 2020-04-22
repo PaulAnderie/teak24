@@ -1,0 +1,14 @@
+{% section 'page-aboutus' %}
+
+{% comment %}
+  Regular page content goes here.
+{% endcomment %}
+<div class="container">
+  {{ page.content }}
+</div>
+
+<script>
+  jQuery('.main-content').removeClass('container');
+  jQuery('body').addClass('aboutus');
+  
+</script>

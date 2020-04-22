@@ -1,0 +1,85 @@
+<div class="clearfix"></div>
+<div class="typo-newsletter" style="margin: {{ section.settings.margin_footer_newsletter }};background:{{ section.settings.color_bg }}">
+  <div class="container">
+    <div class="newsleter-content">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-md-offset-3">
+        <div class="typo-newsletter-content">
+          {% if section.settings.footer_newsletter_title != blank %}
+          <h3 class="module-title"><span>{{ section.settings.footer_newsletter_title }}</span></h3>
+          {% endif %}
+          <div class="content">
+            {% if settings.footer_newsletter_content != blank %}
+            <div class="small-title" >{{ section.settings.footer_newsletter_content }}</div>
+            {% endif %}
+            <form action="{{ section.settings.mailing_list_form_action }}" method="post" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
+              <input type="email" value="" placeholder="{{'typo_newsletter.placeholder' | t }}" name="EMAIL" class="input-group-field" aria-label="Email Address">
+              <span class="input-group-btn">
+                <input type="submit" class="btn" value="{{'typo_newsletter.subscribe' | t }}" name="subscribe">
+              </span>
+            </form>
+          </div>
+        </div>
+       
+          
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Typo - Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "margin_footer_newsletter",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "color",
+        "id": "color_bg",
+        "label": "Background Color ",
+        "default": "#ffffff",
+        "info": "Default Value: #ffffff"
+      },
+      {
+        "type": "header",
+        "content": "Newsletter"
+      },
+      {
+        "type": "text",
+        "id": "footer_newsletter_title",
+        "label": "Newsletter title",
+        "default": "Newsletter Sign Up"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_newsletter_content",
+        "label": "Newsletter Smaill",
+        "default": "Newsletter Smaill"
+      },
+      {
+        "type": "text",
+        "id": "mailing_list_form_action",
+        "label": "MailChimp form action URL",
+        "info": "[Where do I find my MailChimp form action URL?](http:\/\/docs.shopify.com\/support\/configuration\/store-customization\/where-do-i-get-my-mailchimp-form-action)"
+      }
+
+	],
+    "presets": [
+        {
+          "name": "Typo - Newsletter",
+          "category": "Newsletter"
+          
+        }
+      ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

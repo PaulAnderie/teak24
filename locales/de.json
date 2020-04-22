@@ -1,0 +1,233 @@
+{
+  "typo_product": {
+    "add_to_cart": "In den Warenkorb",
+    "select_option": "Optionen",
+    "unavailable": "nicht verfügbar",
+    "sale": "Sale",
+    "sold_out": "Ausverkauft",
+    "from": "ab",
+    "detail": {
+      "product_next": "Nächstes Produkt",
+      "product_prev": "Vorheriges Produkt",
+      "add_cart": "In den Warenkorb",
+      "qty": "Anzahl",
+      "availability_label": "Verfügbarkeit",
+      "instock_product": "Verfügbar",
+      "outstock_product": "ausverkauft",
+      "manystock_product": "viele auf Lager",
+      "unavailable": "nicht verfügbar"
+    }
+  },
+  "typo_header": {
+    "checkout": "Kasse",
+    "shoping_cart": "Warenkorb",
+    "mini_cart": "Warenkorb",
+    "cart_text": "Warenkorb",
+    "viewcart": "Warenkorb ansehen",
+    "total": "Summe",
+    "no_product": "Keine Produkte vorhanden",
+    "custom_link_account": "Mein Konto",
+    "custom_link_wishlist": "Wunschliste",
+    "custom_link_checkout": "Zur Kasse",
+    "custom_link_logout": "Logout",
+    "custom_link_login": "Login",
+    "custom_link_create_account": "Konto erstellen",
+    "search_placeholder": "Produkte suchen"
+  },
+  "typo_wishlist": {
+    "name": "Produkt",
+    "image": "Bild",
+    "price": "Preis pro Einheit",
+    "remove": "Entfernen",
+    "add_cart": "In den Warenkorb",
+    "add_to_wishlist": "zur Wunschliste",
+    "added_to_wishlist": "zur Wunschliste hinzugefügt"
+  },
+  "typo_customers": {
+    "account": {
+      "title": "Mein Konto",
+      "title_order_history": "Bestell Historie",
+      "title_order": "Bestellungen",
+      "title_date": "Datum",
+      "title_payment": "Bestellstatus",
+      "title_fulfillment": "Lieferstatus",
+      "title_total": "Summe",
+      "note": "Sie haben noch keine Bestellungen aufgegeben.",
+      "title_account_details": "Konto Details",
+      "link": "Adresse ansehen"
+    },
+    "activate_account": {
+      "title": "Konto aktivieren",
+      "subtitle": "Erstellen Sie Ihr Passwort, um Ihr Konto zu aktivieren.",
+      "password": "Passwort",
+      "passconfirm": "Passwort bestätigen",
+      "activateaccount": "Konto aktivieren",
+      "declineinvitation": "Einladung ablehnen"
+    },
+    "addresses": {
+      "title": "Mein Konto",
+      "link_addnew": "neue Adresse hinzufügen",
+      "link_return": "Zurück zu den Konto-Details",
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "title_address": "Neue Adresse hinzufügen",
+      "company": "Unternehmen",
+      "address_1": "Adresse 1",
+      "address_2": "Adresse 2",
+      "city": "Stadt",
+      "country": "Land",
+      "provice": "Provinz",
+      "zip_code": "PLZ",
+      "phone": "Telefon",
+      "default_address": "Als Standard-Adresse markieren",
+      "cancel": "abbrechen",
+      "link_add_address": "Adresse hinzufügen",
+      "title_customer_address": "Kunden-Adressbuch",
+      "title_edit_address": "Adresse ändern",
+      "link_update_address": "Adresse aktualisieren",
+      "msg_note": "Sind Sie sicher, dass Sie diese Adresse löschen möchten?"
+    },
+    "login": {
+      "title": "Anmelden",
+      "msg_success": "Wir haben Ihnen eine E-Mail mit einem Link zur Aktualisierung Ihres Passworts geschickt.",
+      "email_address": "Email Adresse",
+      "password": "Passwort",
+      "required_fields": "Pflichtfeld",
+      "forgot_password": "Passwort vergessen?",
+      "link_sign_in": "Anmelden",
+      "link_create_account": "Kundenkonto erstellen",
+      "title_reset_password": "Passwort zurücksetzen",
+      "subtitle_reset_password": "Wir senden Ihnen eine E-Mail, um Ihr Passwort zurückzusetzen.",
+      "text_email": "E-Mail",
+      "link_submit": "Abschicken",
+      "title_a_guest": "Weiter als Gast",
+      "link_go": "Los geht's."
+    },
+    "order": {
+      "title": "Mein Konto",
+      "return_account": "Rückgabe-Konto",
+      "text_order": "Bestellung",
+      "placed_on": "Platziert für",
+      "order_cancelled": "Bestellung storniert am",
+      "reason": "Grund",
+      "title_product": "Produkt",
+      "title_sku": "Artikelnummer",
+      "title_price": "Preis",
+      "title_quantity": "Anzahl",
+      "title_total": "Summe",
+      "subtotal": "Zwischensumme",
+      "discount": "Rabatt",
+      "title_billing_information": "Zahlungs Informationen",
+      "payment_status": "Bezahl Status",
+      "title_shipping_information": "Versand Informationen",
+      "fulfillment_status": "Versand Status"
+    },
+    "register": {
+      "title": "Kundenkonto erstellen",
+      "first_name": "Vorname",
+      "last_name": "Nachnahme",
+      "email": "E-Mail Adresse",
+      "password": "Passwort",
+      "link_create_account": "Konto erstellen",
+      "link_sign_in": "Anmelden"
+    },
+    "reset": {
+      "title": "Passwort zurücksetzen",
+      "sub_title": "Passwort zurücksetzen",
+      "password": "Passwort",
+      "password_confirmation": "Passwort bestätigen",
+      "reset_pass_value": "Passwort zurücksetzen"
+    }
+  },
+  "typo_page": {
+    "page_cart": {
+      "name": "Produkt",
+      "qty": "Anzahl",
+      "price": "Preis",
+      "total_price": "Gesamtpreis",
+      "remove": "Entfernen",
+      "comments": "Kommentare"
+    }
+  },
+  "typo_general": {
+    "404": {
+      "title": "Sieht nach einem 404 Fehler aus",
+      "content_html": "Hoppla, die Seite wurde nicht gefunden.  Klicke <a href=\"\/collections\/all\">hier um weiter einzukaufen.<\/a>"
+    }
+  },
+  "typo_collection": {
+    "toolbar": {
+      "showing": "Anzeigen",
+      "label_view": "Ansicht",
+      "label_softby": "Sortieren nach:",
+      "manual": "Vorgestellt",
+      "price_ascending": "Preis: Niedrig nach Hoch",
+      "price_descending": "Preis: Hoch nach Niedrig",
+      "title_ascending": "A-Z",
+      "title_descending": "Z-A",
+      "created_ascending": "Älter nach Neuer",
+      "created_descending": "Neuer nach Älter",
+      "best_selling": "Meistverkaufte"
+    },
+    "notice": "In dieser Kategorie befinden sich keine Produkte "
+  },
+  "typo_newsletter": {
+    "placeholder": "E-Mail Adresse",
+    "subscribe": "Anmelden"
+  },
+  "homepage": {
+    "onboarding": {
+      "product_title": "Der Name Ihres Produkts",
+      "product_description": "Dieser Bereich dient zur Beschreibung der Details Ihres Produkts. Informieren Sie Kunden über das Aussehen, das Gefühl und den Stil Ihres Produkts. Fügen Sie Details über Farbe, verwendete Materialien, Größe und Herstellungsort hinzu.",
+      "collection_title": "Titel der Kategorie",
+      "blog_title": "Titel Ihres Beitrags",
+      "blog_excerpt": "Ihr Geschäft hat noch keine Blogeinträge veröffentlicht. Ein Blog kann verwendet werden, um über neue Produkteinführungen, Tipps oder andere Neuigkeiten zu sprechen, die Sie mit Ihren Kunden teilen möchten. Sie können den E-Commerce-Blog von Shopify besuchen, um Inspiration und Ratschläge für Ihren eigenen Shop und Blog zu erhalten.",
+      "blog_author": "Autor",
+      "no_content": "Dieser Abschnitt enthält derzeit keinen Inhalt. Fügen Sie über die Seitenleiste Inhalt zu diesem Abschnitt hinzu.",
+      "view_all": "Alle anzeigen"
+    }
+  },
+  "contact": {
+    "form": {
+      "name": "Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "message": "Nachricht",
+      "submit": "Senden",
+      "post_success": "Danke, dass Sie mit uns Kontakt aufgenommen haben. Wir werden uns so schnell wie möglich bei Ihnen melden."
+    }
+  },
+  "shopify": {
+    "sentence": {
+      "two_words_connector": "und",
+      "last_word_connector": "und",
+      "words_connector": ","
+    },
+    "checkout": {
+      "general": {
+        "page_title": "Bezahlung"
+      }
+    }
+  },
+  "typo_blog": {
+    "article": {
+      "by_author": "von",
+      "posted_in": "veröffentlicht",
+      "comment_moderated": "Ihr Kommentar wurde erfolgreich veröffentlicht. Wir werden ihn in Kürze veröffentlichen, da unser Blog moderiert wird.",
+      "comment_successfully": "Ihr Kommentar wurde erfolgreich veröffentlicht! Vielen Dank für Ihren Kommentar!"
+    },
+    "list_blog": {
+      "readmore": "Weiterlesen"
+    }
+  },
+  "typo_comment": {
+    "posted": "Veröffentlicht",
+    "on": "am",
+    "by": "von",
+    "title_comment": "Mitreden",
+    "input_name": "Name",
+    "input_mail": "E-Mail",
+    "input_Comment": "Kommentar",
+    "note": "Alle Blog-Kommentare werden vor der Veröffentlichung überprüft"
+  }
+}

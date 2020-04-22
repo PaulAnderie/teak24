@@ -1,0 +1,159 @@
+<header id="header-content">
+  <div class="header-top">
+    <div class="container">
+      <div class="top-currency row">
+        <div class="col-md-2 col-sm-3 col-xs-3 " id="header-top-currency">
+          {% include 'new-currency-top' %}
+        </div>
+        <div class="col-md-10 col-sm-9 col-xs-9" id="header-top-custom-link">
+          <div id="search-top">
+            <div class="icon-search">
+              <i class="fa fa-search"></i>
+            </div>
+            <div class="search-form" style="display:none">
+              <div class="search-close">
+                <i class="icon_close"></i>
+              </div>
+              {% include 'search-bar' %}
+            </div>
+          </div>
+          {% if settings.enable_wishlist %}
+          <div class="wishlist">
+            <a href="/pages/wish-list" title="My Wishlist"><i class="fa fa-heart"></i> {{'typo_header.custom_link_wishlist' | t }}</a>
+          </div>
+          {% endif %}
+          <div class="header-links">
+            <div class="icons"></div>
+            <div class="cusstom-link">
+              {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+              <ul class="customer-links">
+
+                <li><a href="/checkout"><span>{{'typo_header.checkout' | t }}</span></a></li>
+                <li>
+                  {{ 'Logout' | customer_logout_link }}
+                </li>
+                <li>
+                  <a href="/account">{{'typo_header.custom_link_account' | t }}</a>
+                </li>
+              </ul>
+              {% else %}
+              <ul class="customer-links">
+
+                <li><a href="/checkout"><span>{{'typo_header.checkout' | t }}</span></a></li>
+                <li>
+                  <a href="/account/login">{{'typo_header.custom_link_login' | t }}</a>
+                </li>
+                <li>
+                  {% if shop.customer_accounts_optional %}
+                  <a href="/account/register">{{'typo_header.custom_link_create_account' | t }}</a>
+                  {% endif %}
+                </li>
+              </ul>
+              {% endif %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="header">
+    <div class="container">
+      <div class="header-inner">
+        <div class="row">
+
+          <div class=" col-md-2 col-sm-3 col-xs-12">
+            <div class="logo">
+              {% if settings.use_logo %}
+              <h1><a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" /></a></h1>
+              {% if template == 'index' %}
+              <h1 style="display:none"><a href="/">{{ shop.name }}</a></h1>
+              {% endif %}
+              {% else %}
+              <h1><a href="/">{{ shop.name }}</a></h1>
+              {% endif %}
+            </div>
+
+          </div>
+          <div class=" col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <div class="top-menu" id="header-menu">
+
+              <div class="menu-top text-right">
+                <div class="toggle-menu">
+                  <button class="navbar-toggle btn-menu-canvas" data-toggle="offcanvas" data-target="#off-canvas-nav">
+                    <i class="icon_menu"></i>
+                  </button>
+                </div>
+                <div class="menu-action">{% include 'site-nav' %}</div>
+
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-sm-2 col-xs-1" id="header-top-cart">
+            <div class="header-cart">
+              <!--%include 'customer_links' %-->
+
+              <div class="top-cart">
+
+                <a href="/cart" id="cartToggle">
+                  <span class="icon top-icon-cart"><i class="fa fa-shopping-cart"></i></span>
+                  <div class="text-cart-right">
+                    <span class="shop-cart">Shopping cart </span>
+                    <span id="cart-count">{{ cart.item_count }}</span><span class="text"> item(s) - </span><span class="price">{{cart.total_price | money}}</span>
+                  </div>
+                </a> 
+
+                <div id="dropdown-cart"> 
+                  <div class="cart-empty">
+                    <p>{{'typo_header.no_product' | t }}</p>
+                  </div>
+                  <div class="mini_cart_header">
+                    <ol class="cart-list">  
+                      {% for item in cart.items %}
+                      <li class="item" id="cart-item-{{item.id}}">
+                        <a href="{{item.url}}" title="{{item.title}}" class="product-image"><img src="{{ item.image | product_img_url: 'small' }}" alt="{{item.title}}"></a>
+                        <div class="product-inner">
+
+                          <p class="product-name"><a href="{{item.url}}">{{ item.product.title }}</a></p>
+                          <div class="option">
+                            {% if item.product.variants.size != 0 %}
+                            {% unless item.variant.title contains 'Default' %}
+                            <small>{{ item.variant.title }}</small>
+                            {% endunless %}
+                            {% endif %}
+                          </div>
+                          <div class="cart-collateral"><span class="price">{{item.price | money}}</span> x {{item.quantity}}</div>
+                          <a href="javascript:void(0)" title="Remove This Item" class="btn-remove"><i class="fs1" aria-hidden="true" data-icon="M"></i></a>
+                        </div>
+                      </li>
+                      {% endfor %}
+                    </ol>
+                    <div class="summary">                
+                      <p class="total">
+                        <span class="label" style="color:#000">{{'typo_header.total' | t }}:</span>
+                        <span class="price">{{cart.total_price | money}}</span> 
+                      </p>
+                    </div>
+                    <div class="actions">
+                      <div class="view-cart"><a href="/cart">{{'typo_header.viewcart' | t }}</a></div>
+                      <button class="btn" onclick="window.location='/checkout'">{{'typo_header.checkout' | t }}</button>
+
+                    </div>
+
+                  </div>
+                </div>
+                {% comment %}
+                If customer accounts are enabled, provide login and create account links
+                {% endcomment %}
+              </div> <!-- End Top Header --> 
+            </div>
+          </div>
+        </div>
+      </div> 
+    </div>   
+  </div>
+</header>
+
+

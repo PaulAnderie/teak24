@@ -1,0 +1,61 @@
+{% if settings.notify_cookies %}
+<div id="cookie-notify" class="cookie-notify">
+  
+    <div class="content">{{settings.cookie_content}}</div>
+    <div class="operations">
+      <div class="button accept">{{settings.cookie_content_button }}</div>
+    </div>
+</div>
+<style type="text/css">
+  .notify-cookie #rotator li{bottom:40px;}
+  .notify-cookie .cookie-notify{opacity:1;z-index:1;}
+  .cookie-notify{opacity:0;z-index:-1;font-weight:400;background:#000;color:#fff;position:fixed;bottom:0;width: 100%;-ms-flex: 1;display: flex;-ms-flex-align: center;align-items: center;padding:5px 30px;-ms-flex-line-pack: justify;align-content: space-between;}
+  .cookie-notify .content{flex: 1;line-height: normal; display: flex;    padding-right: 30px;}
+  .button.accept {padding:0 30px;border:2px solid;cursor: pointer;}
+  @media (max-width: 767px){
+    body .cookie-notify{display:block;text-align:center;}
+    body .cookie-notify .content{padding-right:0;display:block;padding-bottom:10px;}
+    .button.accept{display:inline-block;}
+  }
+</style>
+<script type="text/javascript">
+  $(function(){
+    function a() {
+      $("body").addClass("notify-cookie");
+      $("#cookie-notify").length ? $("#cookie-notify").fadeIn("slow") : $("#cookie-notify").length && $.magnificPopup.open({
+        items: {
+          src: "#cookie-notify",
+          type: "inline"
+        },
+        tLoading: "",
+        mainClass: "popup-module mfp-with-zoom popup-type-2",
+        removalDelay: 200,
+        modal: !0
+      });
+    }
+    function b() {
+      var a = 365,
+          b = "domain=." + document.domain,
+          c = "popup-module-cookie",
+          d = "true",
+          e = new Date;
+      e.setTime(e.getTime() + 24 * a * 60 * 60 * 1e3);
+      var f = "; expires=" + e.toGMTString();
+      document.cookie = c + "=" + d + f + "; path=/; " + b
+    }
+    function c() {
+      var a = "popup-module-cookie";
+      if (document.cookie.length > 0) {
+        var b = document.cookie.indexOf(a + "=");
+        if (b != -1) {
+          b = b + a.length + 1;
+          var c = document.cookie.indexOf(";", b);
+          return c == -1 && (c = document.cookie.length), unescape(document.cookie.substring(b, c))
+        }
+      }
+    }!c() && $("#cookie-notify").length && (a(), $("#cookie-notify .accept").click(function() {
+      b(),$("body").removeClass("notify-cookie"), $("#cookie-notify").length ? $("#cookie-notify").fadeOut("slow") : $("#cookie-notify").length && $.magnificPopup.close()
+    }));
+  });
+</script>
+   {% endif %}

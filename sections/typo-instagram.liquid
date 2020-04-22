@@ -1,0 +1,225 @@
+<div class="clearfix"></div>
+{{ 'instafeed.js' | asset_url | script_tag }}
+<div class="typo-instagram">
+  {% if section.settings.show_instagram_boxed %}
+  <div class="">
+    {% else %}
+    <div class="container">
+      {% endif  %}
+      {% if section.settings.instagram_title != blank %}
+      <div class="typo-heading">
+        <h3>{{ section.settings.instagram_title }}</h3>
+      </div>
+      {% endif %}
+      <div id="instafeed" class="content"></div>  
+      {% if section.settings.display_instagram_button %}
+      {% if section.settings.instagram_button_text != blank %}
+      <a href="{{ section.settings.instagram_button_link }}" target="_blank" title="{{ section.settings.instagram_button_text }}" class="btn-instagram">
+        {{ section.settings.instagram_button_text}}
+      </a>		
+      {% endif %}
+      {% endif %}
+      {% if section.settings.show_instagram_boxed %}
+    </div>
+     {% else %}
+    </div>
+    {% endif  %}
+
+
+
+    {% if section.settings.show_carousel_layout_instagram == 'grid' %}
+    <script>
+      var feed = new Instafeed({
+        get: "user",    
+
+        {% if section.settings.user-id != blank %} userId: {{ section.settings.user-id }}, {% endif %}
+        {% if section.settings.accessToken != blank %}accessToken: '{{ section.settings.accessToken }}', {% endif %}
+
+        clientId: '{{ section.settings.client-id }}',
+        limit: '{{ section.settings.limit }}',
+        resolution: '{{ section.settings.resolution_instagram }}',
+        after: function() {
+        jQuery('#instafeed > a').attr( "target", "_blank" );
+        var count_a = jQuery("#instafeed" ).width();
+        var width_item = count_a / {{ section.settings.limit_of_columns }} - 0.3 ;
+        jQuery("#instafeed a").css("width", width_item);
+        jQuery('#instafeed > a').addClass('col-md-2');
+        jQuery('#instafeed ').addClass('row');
+      }
+                               });
+      feed.run();
+
+    </script>
+    {% endif %}
+    {% if section.settings.show_carousel_layout_instagram == 'slide' %}
+    <script>
+
+      var feed = new Instafeed({
+        get: "user",    
+
+        {% if section.settings.user-id != blank %} userId: {{ section.settings.user-id }}, {% endif %}
+        {% if section.settings.accessToken != blank %}accessToken: '{{ section.settings.accessToken }}', {% endif %}
+
+        clientId: '{{ section.settings.client-id }}',
+        limit: '{{ section.settings.limit }}',
+        resolution: '{{ section.settings.resolution_instagram }}',
+        after: function() {
+        jQuery('#instafeed > a').attr( "target", "_blank" );
+        jQuery("#instafeed").owlCarousel({
+        itemsCustom : [
+        [320, 1],
+        [360, 2],
+        [450, 2],
+        [600, 3],
+        [700, 4],
+        [1000, 5],
+        [1200, 6],
+        [1400, 6],
+        [1600, 6]
+        ],
+        autoPlay : false,
+        stopOnHover : false,
+
+        lazyLoad : false,
+        lazyFollow : true,
+        lazyEffect : "fade",
+        pagination : false,
+
+        // Navigation
+        navigation : true,
+        navigationText : ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+        rewindNav : true,
+        scrollPerPage : false,
+      });
+      }
+      });
+      feed.run();
+
+    </script>
+
+    {% endif %}
+    <div class="clearfix"></div>
+
+</div>
+{% schema %}
+  {
+  
+	"name": "Typo Instagram",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "home_instagram_5",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "checkbox",
+        "id": "show_instagram_boxed",
+        "label": "Enable Full Width"
+      },
+      {
+        "type": "select",
+        "id": "show_carousel_layout_instagram",
+        "label": "Layout",
+        "options": [
+          {
+            "value": "slide",
+            "label": "Carousel "
+          },
+          {
+            "value": "grid",
+            "label": "Grid "
+          }
+        ],
+        "default": "slide"
+      },
+      {
+        "type": "select",
+        "id": "resolution_instagram",
+        "label": "Resolution ",
+        "options": [
+          {
+            "value": "thumbnail",
+            "label": "Thumbnail(Default) - 150x150 "
+          },
+          {
+            "value": "low_resolution",
+            "label": "Low Resolution - 306x306"
+          },
+          {
+            "value": "standard_resolution",
+            "label": "Standard Resolution - 612x612"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "instagram_title",
+        "label": "Heading",
+        "default": " Instagram"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_instagram_button",
+        "label": " Show Button",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "instagram_button_text",
+        "label": "Button Label ",
+        "default": "@ INSTAGRAM"
+      },
+      {
+        "type": "text",
+        "id": "instagram_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "text",
+        "id": "client-id",
+        "label": "Client Id",
+        "default": "176379829"
+      },
+      {
+        "type": "text",
+        "id": "user-id",
+        "label": "User Id",
+        "default": "176379829"
+      },
+      {
+        "type": "text",
+        "id": "accessToken",
+        "label": "Access Token",
+        "default": "176379829.099273b.b32da11a694d4417ba7520970b441edd"   
+  	},
+      {
+        "type": "text",
+        "id": "limit",
+        "label": "Number of Photos",
+        "default": "10",
+        "info": "Number of photos to show initially"
+      },
+      {
+        "type": "text",
+        "id": "limit_of_columns",
+        "label": "Number of Columns",
+        "default": "10"
+      }
+	],
+    "presets": [
+        {
+          "name": " Instagram",
+          "category": "Instagram"
+          
+        }
+  	]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

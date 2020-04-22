@@ -1,0 +1,167 @@
+<div class="clearfix"></div>
+<div class="home-blog" style="margin:{{section.settings.home_blog_margin}}">
+  <div class="container">
+    {% if section.settings.home_blog_title != blank %}
+    <div class="typo-heading">
+      <h2>{{ section.settings.home_blog_title }}</h2>
+    </div>
+    {% endif %}
+    {% if section.settings.home_blog_sub_title != blank %}
+    <p class="sub-title">{{section.settings.home_blog_sub_title}}</p>
+    {% endif %}
+    <div class="row">
+      <div class="main-blog">
+        <div id="latest-blogs" class="">
+          {%- assign blog = blogs[section.settings.category_blog] -%}
+          {% for article in blog.articles limit: section.settings.blog_limit %}
+          <div class="blog-item"> 
+
+            <div class="image">
+              <img class="b-lazy" src="{{ article.image.src | img_url: '500x500' }}" alt="{{ article.image.alt }}">
+
+            </div>
+            {% if section.settings.display_blog_date %}
+            <div class="blog-time">
+              <!-- <span class="blog_author"> <i class="fa fa-calendar" ></i> 
+				--> 
+              	{{'typo_blog.article.posted_in' | t }} 
+                <span><time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
+                  {{ article.published_at | date: '%b %d, %Y' }}
+                </time></span>
+            
+            <!-- <span> <i class="fa fa-user-o"></i>  {{'typo_blog.article.by_author' | t }} {{ article.author }} </span>
+            -->
+			</div>
+            {% endif %}
+            <div class="blog-content">
+              <h3>{{ article.title | link_to: article.url }}</h3>
+              {% if section.settings.display_blog_intro %}
+              <div class="short-description">
+                {{ article.content | strip_html | truncatewords: 10 }}
+              </div>
+              {% endif %}
+              {% if section.settings.display_blog_readmore %}
+              <div class="button">
+                <a href="{{ article.url }}" class="btn-readmore">{{ section.settings.blog_readmore}}</a>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+
+    $("#latest-blogs").owlCarousel({
+      itemsCustom : [ 
+        [300, 1],
+        [450, 2],
+        [600, 2],
+        [700, 2],
+        [1000, 3],
+        [1200, 3],
+        [1400, 3],
+        [1600, 3]
+      ],
+      autoPlay : false,
+      stopOnHover : false,
+
+      lazyLoad : false,
+      lazyFollow : true,
+      lazyEffect : "fade",
+      pagination : false,
+
+      // Navigation
+      navigation : true,
+      navigationText : ['Prev','Next'],
+      rewindNav : true,
+      scrollPerPage : false,
+
+    });
+  })
+</script>
+
+
+{% schema %}
+  {
+  
+	"name": "Blog",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "home_blog_margin",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "text",
+        "id": "home_blog_title",
+        "label": "Heading",
+        "default": "Blog"
+      },
+	{
+        "type": "text",
+        "id": "home_blog_sub_title",
+        "label": "Sub Heading",
+        "default": "Sub Heading"
+      },
+      {
+        "type": "checkbox",
+        "id": "display_blog_date",
+        "label": "Show date ",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "display_blog_intro",
+        "label": "Show Intro",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "display_blog_readmore",
+        "label": "Show Read More",
+        "default": true
+      },
+      {
+        "type": "blog",
+        "id": "category_blog",
+        "label": "Blog"
+      },
+      {
+        "type": "text",
+        "id": "blog_readmore",
+        "label": "Text Link",
+        "default": "Read More"
+      },
+      {
+        "type": "text",
+        "id": "blog_limit",
+        "label": "Posts",
+        "default": "3"
+      }
+	],
+    "presets": [
+        {
+          "name": "Blog posts",
+          "category": "Blog",
+          "settings": {
+            "category_blog": "News",
+            "blog_limit": "3"
+          }
+        }
+      ]
+ }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

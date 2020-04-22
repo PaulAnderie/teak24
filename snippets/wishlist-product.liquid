@@ -1,0 +1,14 @@
+{% if settings.enable_wishlist %}
+{% if customer %}
+<div class="product-wishlist">
+  <div class="default-wishbutton-{{ product.handle }}">
+    <a class="add-to-wishlist" href="{{ product.handle | handleize }}"><i class="fa fa-heart-o"></i></a></div>
+  <div class="added-wishbutton-{{ product.handle }}" style="display: none;">
+    <a class="added-wishlist" href="/pages/wishlist"><i class="fa fa-check"></i> </a></div>
+</div>
+{% else %}
+<div class="product-wishlist">
+  <a class="add-to-wishlist" href="/account/login" title="Add to wishlist"><i class="fa fa-heart-o"></i></a>
+</div>
+{% endif %}
+{%endif %}

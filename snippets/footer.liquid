@@ -1,0 +1,58 @@
+<footer class="typo-footer">
+  <div class="container">
+    <div class="footer-top"> 
+      <div class="row">
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <div class="images">
+            {{ 'logo_footer_top.png' | asset_url | img_tag }}
+          </div>
+          {% if settings.footer_top_content != blank %}
+          <div class="content">
+            {{ settings.footer_top_content }}
+          </div>
+          {% endif %}
+        </div>
+        {% if settings.footer_column_1_title != blank %}
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <h3 class="module-title">{{ settings.footer_column_1_title }}</h3>
+          <ul class="content">
+            {% assign footerCol1 = settings.footer_column_1_title | handleize %}
+
+            {% for link in linklists[settings.footercol1].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        {% if settings.footer_column_2_title != blank %}
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          <h3 class="module-title">{{ settings.footer_column_2_title }}</h3>
+          <ul class="content">
+            {% assign footerCol2 = settings.footer_column_2_title | handleize %}
+            {% for link in linklists[settings.footercol2].links %}
+            <li>{{ link.title | link_to: link.url }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        <div class="col-md-3 col-sm-3 col-xs-12">
+          {% if settings.footer_display_newsletter %}
+          {% include 'homepage-block-newsletter' %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      {% if settings.display_footer_address %}
+      <address>
+        {% if settings.footer_address_code %}
+        {{ settings.footer_address_code }}
+        {% endif%}
+      </address>
+      {% endif %}
+
+    </div>
+  </div>
+</footer>
+{% include 'message-modal' %}

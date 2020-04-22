@@ -1,0 +1,291 @@
+
+<div class="typo-banner-slide" style="margin:{{ section.settings.home_block_slideshow }}">
+<div class="main-slideshow">
+  {% if section.settings.option_slideshow_layout == 'slideshow_auto'%}
+  <div class="container">
+    {% else %}
+    <div class="">
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+      <div class="flexslider">
+        <ul class="slides">
+
+           {% for block in section.blocks %}
+          <li class="slide slide-{{ forloop.index }}">
+            <a href="{{ block.settings.slide_link_1 }}">
+              {% if block.settings.slideshow != blank %}
+              <img class="b-lazy slide-img" src="{{ block.settings.slideshow | img_url: '2048x' }}" alt="">
+           
+              {% else %}
+               {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                  {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </a>
+            <div class="slide-des vertical-{{ block.settings.option_vertical_align }} text-{{block.settings.option_align_text}}">
+              <div class="slide-text">
+                 <div class="container">
+                <div class="caption" style="text-align:{{block.settings.option_align_text }}">
+                  
+                   {% if block.settings.slide_title != blank %}
+                  <h2 class="title">{{block.settings.slide_title }}</h2>
+                  {% endif %}
+                   {% if block.settings.slide_text_1 != blank %}
+                  <p>{{block.settings.slide_text_1 }}</p>
+                  {% endif %}
+                  {% if block.settings.slide_button != blank %}
+                  <div class="text"><a href="{{ block.settings.slide_link_1 }}">{{ block.settings.slide_button }}</a>
+                  </div>
+                  {% endif %}
+                </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </div><!-- /.flexslider -->
+      {% endif %}
+    </div>
+    <style>
+      .flexslider .text a{border-bottom:1px solid {{section.settings.color_slide_button_text}};color:{{section.settings.color_slide_button_text}};background:{{section.settings.color_slide_button_bg}}}
+      .flexslider .text a:hover{color:{{section.settings.color_slide_button_text_hover}};border-bottom:1px solid {{section.settings.color_slide_button_text_hover}}; background:{{section.settings.color_slide_button_bg_hover}}}
+      .flexslider h2, .flexslider p{color:{{section.settings.color_slide}}}
+      {% if section.settings.show_navigation %}
+      body .flex-direction-nav{display:block!important}
+      {%endif %}
+      .flex-direction-nav{display:none!important}
+      .flex-direction-nav li a{color:{{section.settings.color_navigation}};background:{{section.settings.color_navigation_bg}};}
+      .flex-direction-nav li a:hover{color:{{section.settings.color_navigation_hover}};background:{{section.settings.color_navigation_bg_hover}};}
+    </style>
+</div>
+  </div>
+  <script>
+  if ( jQuery('.slides li').size() > 0 ) {
+
+    jQuery('.flexslider').flexslider({
+      animation: "slide",
+      slideshow: true,
+      animationDuration: 700,
+      slideshowSpeed: {{ section.settings.slideshow_speed }},
+      animation: "fade",
+      controlsContainer: ".flex-controls",
+      controlNav: true,
+      prevText: '<span class="fa fa-angle-left"></span>',
+	  nextText: '<span class="fa fa-angle-right"></span>',
+      keyboardNav: true
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Typo - Slideshow",
+  "class": "index-section",
+  "max_blocks": 4,
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "home_block_slideshow",
+      "label": "Margin",
+      "default": "0px 0px 0px 0px"
+    },
+    {
+      "type": "select",
+      "id": "option_slideshow_layout",
+      "label": "Layout",
+      "options": [
+        {
+          "value": "slideshow_fullwidth",
+          "label": "Full Width"
+        },
+        {
+          "value": "slideshow_auto",
+          "label": "Boxed "
+        }
+      ]
+    },
+
+    {
+      "type": "select",
+      "id": "slideshow_speed",
+      "label": "Change slides every",
+      "options": [
+        { "value": "5000", "label": "5 seconds" },
+        { "value": "6000", "label": "6 seconds" },
+        { "value": "7000", "label": "7 seconds" },
+        { "value": "8000", "label": "8 seconds" },
+        { "value": "9000", "label": "9 seconds" },
+        { "value": "10000", "label": "10 seconds" }
+      ],
+      "default": "7000"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show Next/Prev",
+      "default": true
+    },
+
+    {
+      "type": "color",
+      "id": "color_navigation",
+      "label": "Next/Prev Button Label Color",
+      "default": "#666",
+      "info": "Default Value: #666"
+    },
+    {
+      "type": "color",
+      "id": "color_navigation_bg",
+      "label": "Next/Prev Button Background Color",
+      "default": "#ffffff",
+      "info": "Default Value: #ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_navigation_hover",
+      "label": "Next/Prev Button Label Hover Color",
+      "default": "#ffffff",
+      "info": "Default Value: #ffffff"
+    },
+    {
+      "type": "color",
+      "id": "color_navigation_bg_hover",
+      "label": "Next/Prev Button Hover Background Color",
+      "default": "#333",
+      "info": "Default Value: #333"
+    },
+    {
+      "type": "color",
+      "id": "color_slide",
+      "label": "Color text",
+      "default": "#333",
+      "info": "Default Value: #333"
+    },
+    {
+      "type": "color",
+      "id": "color_slide_button_bg",
+      "label": "Background Color ",
+      "default": "#333",
+      "info": "Default Value: #333"
+    },
+    {
+      "type": "color",
+      "id": "color_slide_button_text",
+      "label": "Color text",
+      "default": "#fff",
+      "info": "Default Value: #fff"
+    },
+    {
+      "type": "color",
+      "id": "color_slide_button_bg_hover",
+      "label": "Background Color Hover",
+      "default": "#fff",
+      "info": "Default Value: #fff"
+    },
+    {
+      "type": "color",
+      "id": "color_slide_button_text_hover",
+      "label": "Color text hover ",
+      "default": "#333",
+      "info": "Default Value: #333"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image slide",
+      "settings": [
+		{
+        "type": "image_picker",
+        "id": "slideshow",
+        "label": "Slideshow Image"
+      },
+  {
+      "type": "select",
+      "id": "option_vertical_align",
+      "label": "Vertical Align",
+      "options": [
+        {
+          "value": "top",
+          "label": "Top"
+        },
+        {
+          "value": "middle",
+          "label": "Middle "
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom "
+        }
+      ]
+    },
+  {
+      "type": "select",
+      "id": "option_align_text",
+      "label": "Text Align",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "right",
+          "label": "Right "
+        },
+        {
+          "value": "center",
+          "label": "Center "
+        }
+      ]
+    },
+      {
+        "type": "text",
+        "id": "slide_title",
+        "label": "Title",
+        "default": "Title"
+      },
+  
+      {
+        "type": "textarea",
+        "id": "slide_text_1",
+        "label": "Content For Slide",
+        "default": "Text default"
+      },
+      {
+        "type": "text",
+        "id": "slide_button",
+        "label": "Button",
+        "default": "Button"
+      },
+      {
+        "type": "text",
+        "id": "slide_link_1",
+        "label": "Link",
+        "default": "#"
+      }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Typo - Slideshow",
+    "category": "Image",
+    "settings": {
+      "slideshow_speed": "5000"
+    },
+    "blocks": [
+      {
+        "type": "image"
+      }
+    ]
+  }]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

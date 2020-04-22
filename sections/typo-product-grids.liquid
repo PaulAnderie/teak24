@@ -1,0 +1,194 @@
+<div class="clearfix"></div>
+<div class="typo-grid-product" style="margin:{{ section.settings.block_product }}">
+  <div class="container">
+    {% if section.settings.home_product_title != blank %}
+    <div class="typo-heading">
+      <h3>{{ section.settings.home_product_title }}</h3>
+    </div>
+    {% endif %}
+    {% if section.settings.home_product_sub_title != blank %}
+    <p class="sub-title">{{section.settings.home_product_sub_title}}</p>
+    {% endif %}
+    <div class="row">
+  {%- assign collection = collections[section.settings.collection_product_1] -%}
+       {%- assign product_limit = section.settings.grid | times: section.settings.rows -%}
+      {% case section.settings.grid %}
+    {% when '2' %}
+      {%- assign grid_item_width = 'col-sm-6 col-xs-12' -%}
+    {% when '3' %}
+      {%- assign grid_item_width = 'col-sm-4 col-xs-12' -%}
+    {% when '4' %}
+      {%- assign grid_item_width = 'col-sm-3 col-xs-12' -%}
+    {% when '5' %}
+      {%- assign grid_item_width = 'col-item-5' -%}
+  {% endcase %}
+     
+      {% assign display_vendor = section.settings.display_vendor %}
+      {% assign tabs_collection = section.settings.collection_product %}
+        <div class="product-grids-items">
+          <div id="{{ section.settings.home_product_title_1 | handleize }}" class="owl-control owl_collection">
+            {% for product in collections[tabs_collection].products limit: product_limit %}          
+            {% assign current_collection = collections[tabs_collection] %}
+             <div class="grids-item {{ grid_item_width }}" style="text-align:{{section.settings.title_alignment}}; float: left;">
+            {% include 'product-grid-item' %}
+            </div>
+          {% else %}
+          {% for i in (1..product_limit) %}
+              <div class="grids-item grid__item {{ grid_item_width }}">
+                <div class="grid-item grid-view-item">
+                  <a href="#" class="grid-view-item__link">
+                    {% if product.title %}
+                      {%- assign compare_at_price = product.compare_at_price -%}
+                      {%- assign price = product.price -%}
+                      {%- assign price_varies = product.price_varies -%}
+                      {%- assign available = product.available -%}
+                    {% else %}
+                      {%- assign compare_at_price = 1999 -%}
+                      {%- assign price = 1999 -%}
+                      {%- assign price_varies = false -%}
+                      {%- assign available = true -%}
+                    {% endif %}
+                    <div class="grid-view-item__image">
+                      {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                      {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                    <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+                    <div class="grid-view-item__meta">
+                      <s class="product-price__price">{{ compare_at_price | money }}</s>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            {% endfor %}
+            {% endfor %}
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+  	  "name": "Typo - Product Grid",
+      "class": "index-section",
+      "settings": [
+
+        {
+          "type": "text",
+          "id": "block_product",
+          "label": "Margin",
+          "default": "0px 0px 0px 0px"
+        },	
+      
+      {
+        "type": "text",
+        "id": "home_product_title",
+        "label": "Heading",
+        "default": "Product Grid"
+      },
+	{
+        "type": "text",
+        "id": "home_product_sub_title",
+        "label": "Sub Heading",
+        "default": "Sub Heading"
+      },
+      {
+        "type": "collection",
+        "id": "collection_product",
+        "label": "Collection "
+      },
+
+        {
+          "type": "select",
+          "id": "title_alignment",
+          "label": "Content Alignment",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+      {
+        "type": "select",
+        "id": "grid",
+        "label": "Products per row",
+        "default": "3",
+        "options": [
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+      {
+        "type": "select",
+        "id": "rows",
+        "label": "Rows",
+        "default": "2",
+        "options": [
+          {
+            "value": "1",
+            "label": "1"
+          },
+          {
+            "value": "2",
+            "label": "2"
+          },
+          {
+            "value": "3",
+            "label": "3"
+          },
+          {
+            "value": "4",
+            "label": "4"
+          },
+          {
+            "value": "5",
+            "label": "5"
+          }
+        ]
+      },
+    {
+      "type": "checkbox",
+      "id": "display_vendor",
+      "label": "Show Vendor",
+      "default": false
+    }
+
+	],
+    "presets": [
+    {
+      "name": "Typo - Product Grid",
+      "category": "Collection"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

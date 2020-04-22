@@ -1,0 +1,150 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+
+  <!-- Basic page needs ================================================== -->
+  <meta charset="utf-8">
+
+  <!-- Title and description ================================================== -->
+  <title>
+    {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}">
+  {% endif %}
+
+
+  <!-- Helpers ================================================== -->
+  <link rel="canonical" href="{{ canonical_url }}">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/x-icon" />
+
+  <!-- fonts -->
+  {% include 'font-family' %}
+  <!-- Styles -->
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+  {{ 'extention.css' | asset_url | stylesheet_tag }}
+  {{ 'styles.css' | asset_url | stylesheet_tag }}
+  {{ 'styles-setting.css' | asset_url | stylesheet_tag }}
+  {{ 'responsive.css' | asset_url | stylesheet_tag }}
+  {{ 'font-icon.css' | asset_url | stylesheet_tag }}
+  <!-- Scripts -->
+  {% include 'head_scripts' %}
+
+  <!-- Header hook for plugins ================================================== -->
+  {{ content_for_header }}
+
+  <!--[if lt IE 9]>
+{{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+<![endif]-->
+
+  {% if template contains 'customers' %}
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+{% include "vr-insertcode-header" %}</head>
+<body id="{{ page_title | handle }}" class=" {% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+ 
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NZJFPPR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+  {% if settings.display_loadding_page %}<div id="loading"></div>{% endif %}
+  <div class="wrapper">	
+
+    {% section 'typo-header' %}
+    <div class="product-quickview"></div>
+    {% if settings.display_breadcrumb %}
+    <div class="clearfix breadcrumb-wrap">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            {% include 'breadcrumb' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    <main class="container typo-main main-content">
+      {{ content_for_layout }}
+ {% include 'station-tabs' %}
+    </main>
+    {% section 'typo-footer' %}
+    {% include 'quick-view-product' %}
+
+    {% include 'footer_scripts' %}
+    {% include 'popup-newsletter' %}
+    <div id="back-top" style="display: none;"><a class="" href="#top"><i class="fa fa-angle-up"></i></a></div>
+  </div>
+  {% include 'typo-cookie-popup' %}
+  {% if settings.notify_product %}
+  <ul id="rotator" style="margin:0;">
+    <li class="">
+      {% assign my_collection = collections[settings.notify_product_collection] %}
+      {%- for product in my_collection.products limit: settings.notify_product_limit -%}
+      <div class="rotator-image">
+        <a href="{{ product.url | within: collection }}" class="pr-image">
+          <img class="feature-images lazyload"src="{{ product.featured_image | img_url: '100x' |  split:'?' | first }}"alt="">
+        </a>
+        <div class="rotator-content">
+          <p>Someone purchsed a</p>
+          <h3><a class="product-title" href="{{ product.url | within: collection }}">{{ product.title }}</a></h3>
+          <div class="timeline"></div>
+        </div>
+        <span class="close-box"><i class="lnr lnr-cross"></i></span>	
+      </div>
+      {% endfor %}
+    </li>
+  </ul>
+  <script type="text/javascript">
+    $(function(){
+      var delay = 10000;
+      setInterval(function(){
+        changeImage();
+      },delay);
+      $("#rotator .close-box").click(function(){
+        $(this).parent().hide();
+      })
+      function changeImage(){
+        var numbertime = "{{ settings.timeline}}";
+        var numbersArraytime = numbertime.split('|');
+        function getnumbersArraytime() {
+          return numbersArraytime[Math.floor((Math.random()*numbersArraytime.length))];
+        }
+        // save list items in an array
+        var $liArr = $('#rotator > li');
+        // select a random list item
+        var $currLi = $liArr.eq(Math.floor(Math.random()*$liArr.length));
+        // get the currently visible image
+        var $currImg = $('.rotator-image:visible', $currLi);
+        if ($currImg.next().length == 1) {
+          var $next = $currImg.next();
+        } else {
+          var $next = $('.rotator-image:first', $currLi);
+        }
+        jQuery.each( $liArr, function() {
+          $(".timeline").html( getnumbersArraytime() );
+        });
+        $currImg.removeClass("currently");
+        $currImg.fadeOut();
+        setTimeout(function(){ 
+          $next.addClass("currently");
+          $next.fadeIn();
+        }, 1000);
+      }  
+    });
+  </script>
+  {% endif %}
+
+  {% include 'canvas-menu' %}
+  {{ 'ajax.jquery.min.js' | asset_url | script_tag }}
+  <div class="body-overlay"></div>
+{% include "vr-insertcode-footer" %}</body>
+</html>

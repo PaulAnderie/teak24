@@ -1,0 +1,113 @@
+<div class="clearfix"></div>
+<div class="typo-block-text-image" style="margin:{{section.settings.margin_grid_image_banner}}">
+  {% if section.settings.enable_grid_image_banner_fullwidth %} 
+  <div class="full-width">
+    {% else %}
+    <div class="container">
+      {% endif %}
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="home-block-text-image {% if section.settings.enable_grid_image_bg == 'image' %}image{% endif %}">
+            <div class="block-text-image-content" style="color:{{section.settings.color_title_1}};{% if section.settings.enable_grid_image_bg == 'color' %}background:{{ section.settings.color_title_bg}}{% endif %}">
+              {% if section.settings.grid_image_banner_title_1 != blank %}
+            
+                {{ section.settings.grid_image_banner_title_1 }}
+          
+              {% endif %}
+              <p class="view-more"> <a href="{{ section.settings.grid_image_banner_link_1 }}">{{ section.settings.grid_image_banner_button }}</a></p>
+            </div>
+            {% if section.settings.enable_grid_image_bg == 'image' %}
+            <div class="image">
+              {% if section.settings.grid_image_banner_image_1 != blank %}
+              
+                <img class="b-lazy" src="{{ section.settings.grid_image_banner_image_1 | img_url: '2048x'  }}" alt="">
+                
+              {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% schema %}
+  {
+	"name": "Typo - Block Text Image",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "margin_grid_image_banner",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_grid_image_banner_fullwidth",
+        "label": "Enable Block Full Width "
+      },
+  {
+      "type": "select",
+      "id": "enable_grid_image_bg",
+      "label": "Use Background",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "color",
+          "label": "Color"
+        }
+      ]
+    },
+  {
+        "type": "color",
+        "id": "color_title_bg",
+        "label": " Background Color ",
+        "default": "#ffffff",
+        "info": "Default Value: #ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_title_1",
+        "label": " Color ",
+        "default": "#222",
+        "info": "Default Value: #222"
+      },
+      {
+        "type": "textarea",
+        "id": "grid_image_banner_title_1",
+        "label": "Content",
+        "default": "Content"
+      },
+      {
+        "type": "text",
+        "id": "grid_image_banner_button",
+        "label": "Button",
+        "default": "Button"
+      },
+      {
+        "type": "text",
+        "id": "grid_image_banner_link_1",
+        "label": "Link 1",
+        "default": "#"
+      },
+  
+      {
+        "type": "image_picker",
+        "id": "grid_image_banner_image_1",
+        "label": "Images"
+      }
+	],
+    "presets": [
+        {
+          "name": "Typo - Block Text Image",
+          "category": "Image"
+        }
+  	]
+ }
+{% endschema %}

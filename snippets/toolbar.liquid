@@ -1,0 +1,93 @@
+<div class="toolbar">
+
+  <div class="toolbar-mode row"> 
+    <div class="filter-collection-left">
+      <a class="btn harman_btn4">Filter</a>
+    </div>
+    <div class="col-md-3 col-sm-3 col-xs-3">
+      <div class="collection-view">
+        <label>{{ 'typo_collection.toolbar.label_view' |t }}</label>
+        <a title="Grid view" class="change-view{% unless template contains 'list' %} active{% endunless %}" data-view="grid">
+          <span class="fa fa-th"></span>
+
+        </a>
+        <a title="List view" class="change-view{% if template contains 'list' %} active{% endif %}" data-view="list">
+          <span class="fa fa-th-list"></span>
+
+        </a>
+      </div>
+    </div>
+    <div class="col-md-5 col-sm-5 col-xs-5 browse-tags-wrap">
+      <div class="browse-tags">
+        <label>{{ 'typo_collection.toolbar.label_softby' |t }}</label>
+        <select class="sort-by">
+          <option value="manual">{{ 'typo_collection.toolbar.manual' | t }}</option>
+          <option value="price-ascending">{{ 'typo_collection.toolbar.price_ascending' | t }}</option>
+          <option value="price-descending">{{ 'typo_collection.toolbar.price_descending' | t }}</option>
+          <option value="title-ascending">{{ 'typo_collection.toolbar.title_ascending' | t }}</option>
+          <option value="title-descending">{{ 'typo_collection.toolbar.title_descending' | t }}</option>
+          <option value="created-ascending">{{ 'typo_collection.toolbar.created_ascending' | t }}</option>
+          <option value="created-descending">{{ 'typo_collection.toolbar.created_descending' | t }}</option>
+          <option value="best-selling">{{ 'typo_collection.toolbar.best_selling' | t }}</option>
+        </select>       
+      </div> 
+    </div>
+    <div class="col-md-4 col-sm-4 col-xs-6 page-total-wrap">
+      <div class="page-total">
+        {{ 'typo_collection.toolbar.showing' |t }}: {{ paginate.current_offset | plus: 1 }}-{% if paginate.next %}{{ paginate.current_offset | plus: paginate.page_size }}{% else %}{{ paginate.items }}{% endif %} von {{ paginate.items }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  jQuery(function() {
+    jQuery('.filter-collection-left > a').on('click', function(){
+      jQuery('.wrapper').addClass('show-fillter');
+    }
+                                            );
+    jQuery(document).mouseup(function (e){
+
+      var container = jQuery("#filter-sidebar");
+
+      if (!container.is(e.target) // if the target of the click isn't the container...
+          && container.has(e.target).length === 0) // ... nor a descendant of the container
+      {
+        jQuery('.wrapper').removeClass('show-fillter');
+      }
+    });
+   jQuery('.close-sidebar-collection').click(function(){
+  		jQuery('.wrapper').removeClass('show-fillter');
+  });
+  });
+  jQuery('.sort-by')
+  .val('{{ collection.sort_by | default: collection.default_sort_by  }}')
+       .bind('change', function() {
+    Shopify.queryParams.sort_by = jQuery(this).val();
+    location.search = jQuery.param(Shopify.queryParams).replace(/\+/g, '%20');
+  });
+
+  function replaceUrlParam(url, paramName, paramValue) {
+    var pattern = new RegExp('('+paramName+'=).*?(&|$)'),
+        newUrl = url.replace(pattern,'$1' + paramValue + '$2');
+    if ( newUrl == url ) {
+      newUrl = newUrl + (newUrl.indexOf('?')>0 ? '&' : '?') + paramName + '=' + paramValue;
+    }
+    return newUrl;
+  }
+
+  jQuery(function() {
+    jQuery('.change-view').on('click', function() {
+      var view = jQuery(this).data('view'),
+          url = document.URL,
+          hasParams = url.indexOf('?') > -1;
+
+      if (hasParams) {
+        window.location = replaceUrlParam(url, 'view', view);
+      } else {
+        window.location = url + '?view=' + view;
+      }
+    });
+  });
+</script>

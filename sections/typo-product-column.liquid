@@ -1,0 +1,159 @@
+<div class="clearfix"></div>
+{% assign row_limit_setting = section.settings.tabs_visible_item %}
+
+{% assign product_limit = section.settings.home_section_limit %}
+
+<div class="section-product-col" style="margin:{{ section.settings.typo_section_margin }}">
+  <div class="{% if section.settings.typo_section_fullwidths %}full-width{% else %}container{% endif %}">
+    <div class="row">
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      {% case section.settings.width %}
+      {% when '25%' %}
+      {%- assign block_class = 'col-md-3 col-sm-3 col-xs-6' -%}
+      {% when '33%' %}
+      {%- assign block_class = 'col-md-4 col-sm-4 col-xs-6' -%}
+      {% when '50%' %}
+      {%- assign block_class = 'col-md-6 col-sm-6 col-xs-6' -%}
+      {% endcase %}
+      {% assign typo_collections = block.settings.typo_collections %}
+      <div class="{{block_class}}">
+        {% assign items_tab = block.settings.items_tab_1 %}
+        <h3 class="title"> {{ items_tab  }}</h3>
+        {% for product in collections[typo_collections].products limit: product_limit %}          
+        {% assign current_collection = collections[typo_collections] %}
+        <div class="grids-item " >
+          {% include 'product-grid-item' %}
+        </div>
+        {% else %}
+        {% for i in (1..product_limit) %}
+        <div class="grid__item_add col-sm-3">
+          <div class="grid-view-item">
+            <a href="#" class="grid-view">
+              {% if product.title %}
+              {%- assign compare_at_price = product.compare_at_price -%}
+              {%- assign price = product.price -%}
+              {%- assign price_varies = product.price_varies -%}
+              {%- assign available = product.available -%}
+              {% else %}
+              {%- assign compare_at_price = 1999 -%}
+              {%- assign price = 1999 -%}
+              {%- assign price_varies = false -%}
+              {%- assign available = true -%}
+              {% endif %}
+              <div class="grid-view-item__image">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="h4 grid-view-item__title">{{ 'homepage.onboarding.product_title' | t }}</div>
+              <div class="grid-view-item__meta">
+                <s class="product-price__price">{{ compare_at_price | money }}</s>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Typo - Product Column",
+  "class": "index-section",
+  "max_blocks": 4,
+  "settings": [
+    {
+      "type": "text",
+      "id": "typo_section_margin",
+      "label": "Margin",
+      "default": "0px 0px 0px 0px"
+    },
+	
+    {
+      "type": "checkbox",
+      "id": "typo_section_fullwidths",
+      "label": "Enable Full Width "
+    },
+
+        {
+          "type": "select",
+          "id": "width",
+          "label": "Layout width",
+          "default": "33%",
+          "options": [
+            {
+              "value": "25%",
+              "label": "25%"
+            },
+            {
+              "value": "33%",
+              "label": "33%"
+            },
+            {
+              "value": "50%",
+              "label": "50%"
+            }
+          ]
+        },
+     {
+      "type": "text",
+      "id": "home_section_limit",
+      "label": "Limit Product",
+      "default": "3"
+    },
+	{
+      "type": "checkbox",
+      "id": "display_vendor",
+      "label": "Show Vendor",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "items_tab_1",
+          "label": "Lable Tabs",
+          "default": "Items "
+        },
+        {
+          "type": "collection",
+          "id": "typo_collections",
+          "label": "Collection to products from"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Typo - Product Column",
+      "category": "Collection",
+      "blocks": [
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        },
+        {
+          "type": "column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
