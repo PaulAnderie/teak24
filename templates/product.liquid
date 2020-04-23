@@ -175,8 +175,8 @@
 
 
                                 </li>
-                                <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - {{ product.metafields.shipping.time }}</li>
-                                <li><span class="fa-li"><i class="fa fa-history"></i></span><strong>Versandkosten</strong> - {{ product.metafields.shipping.cost }}</li>
+                                <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - <span class="meta shipping time">{{ product.metafields.shipping.time }}</span></li>
+                                <li><span class="fa-li"><i class="fa fa-history"></i></span><strong>Versandkosten</strong> - <span class="meta shipping cost">{{ product.metafields.shipping.cost }}</span></li>
                             </ul>
                         </div>
 
@@ -259,7 +259,8 @@
 {% capture 'meta_data' %}
     {% for variant in product.variants %}
         {{ variant.sku | json }}: {
-        meta: {{ variant.metafields.specs | json }},
+        specs: {{ variant.metafields.specs | json }},
+        shipping: {{ variant.metafields.shipping | json }},
         inventory_quantity: {{ variant.inventory_quantity | json }}
         }
         {% unless forloop.last %},{% endunless %}
@@ -268,6 +269,7 @@
 
 <script>
     var metaData = { {{ meta_data }} };
+    console.log("metaData:", metaData);
 </script>
 
 
@@ -450,13 +452,23 @@ var selectCallback = function(variant, selector) {
         var attrs = ["length", "width", "depth", "height", "seatingheight", "seatingdepth", "form", "feature"];
         for (var i in attrs) {
             var attr = attrs[i];
-            if(myMeta.meta[attr]) {
+            if(myMeta.specs[attr]) {
 //                console.log("show",attr);
-                jQuery(".meta.specs."+attr).show().find("span").text(myMeta.meta[attr]);
+                jQuery(".meta.specs."+attr).show().find("span").text(myMeta.specs[attr]);
             } else {
 //                console.log("hide",attr);
                 jQuery(".meta.specs."+attr).hide();
             }
+        }
+        if(myMeta.shipping.time) {
+            jQuery(".meta.shipping.time").text(myMeta.shipping.time);
+        } else {
+            jQuery(".meta.shipping.time").text("unbekannt");
+        }
+        if(myMeta.shipping.cost) {
+            jQuery(".meta.shipping.cost").text(myMeta.shipping.cost);
+        } else {
+            jQuery(".meta.shipping.cost").text("unbekannt");
         }
 
     }
