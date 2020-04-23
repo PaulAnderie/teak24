@@ -125,13 +125,10 @@
                                 </div>
 
                                 <div class="prices">
-                                    {% if product.compare_at_price > product.price %}
-                                        <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
+                                    <span class="compare-price" {% if product.compare_at_price <= product.price %} style="display:none;"{% endif %}>{{ product.compare_at_price_max | money }}</span>
                                         <span class="price on-sale" itemprop="price">{{ product.price | money }}</span>
-                                    {% else %}
-                                        <span class="price">{{ product.price | money }}</span>
-                                    {% endif %}
                                 </div>
+                                
 
                                 {% if product.available %} 
                                     <div class="dec button">{{'typo_product.detail.qty' | t }}:</div>
@@ -307,7 +304,7 @@ jQuery(document).ready(function(){
 {% if settings.style_thumb_image == 'ticky'%}
     <script>
         if (jQuery(window).width() > 767) {
-            jQuery(document).ready(function(){ if ($('.typo-main')[0]) {jQuery(window).resize(function () {if (jQuery(window).width() > 768) {var wraper_product, item_product, maxMove_product, item, sticky_image;wraper_product = $('.typo-main #product').outerHeight(true);item_product = $('.product-shop > div').outerHeight(true);maxMove_product = wraper_product - item_product;$('.product-shop').data('maxMove_product', maxMove_product);sticky_image = 0;if ($('#header-content .header')[0]) {sticky_image = $('#header-content').height();/*console.log(sticky_image);*/}var wrapptoTop = $('.typo-main #product').offset().top - sticky_image;jQuery(window).bind("scroll", function () {var toTop;item = $('.product-shop');maxMove_product = item.data('maxMove_product');toTop = $(window).scrollTop() - wrapptoTop;if (toTop > 0 && toTop <= maxMove_product) {item.css('padding-top', toTop + 'px');}if ($(window).scrollTop() < wrapptoTop) {item.css('padding-top', 0 + 'px');}if (toTop > maxMove_product) {item.css('padding-top', maxMove_product + 'px');}});}}).resize();}})
+            jQuery(document).ready(function(){ if ($('.typo-main')[0]) {jQuery(window).resize(function () {if (jQuery(window).width() > 768) {var wraper_product, item_product, maxMove_product, item, sticky_image;wraper_product = $('.typo-main #product').outerHeight(true);item_product = $('.product-shop > div').outerHeight(true);maxMove_product = wraper_product - item_product;$('.product-shop').data('maxMove_product', maxMove_product);sticky_image = 0;if ($('#header-content .header')[0]) {sticky_image = $('#header-content').height();console.log(sticky_image);}var wrapptoTop = $('.typo-main #product').offset().top - sticky_image;jQuery(window).bind("scroll", function () {var toTop;item = $('.product-shop');maxMove_product = item.data('maxMove_product');toTop = $(window).scrollTop() - wrapptoTop;if (toTop > 0 && toTop <= maxMove_product) {item.css('padding-top', toTop + 'px');}if ($(window).scrollTop() < wrapptoTop) {item.css('padding-top', 0 + 'px');}if (toTop > maxMove_product) {item.css('padding-top', maxMove_product + 'px');}});}}).resize();}})
         }
     </script>
 {% endif %}

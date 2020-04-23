@@ -274,11 +274,13 @@
             }
             if (i.length > 0 && i.hasClass("products-grid")) {
                 if (window.product_image_resize) {
+                    /* FIXME
                     i.find("img").fakecrop({
                         fill: window.images_size.is_crop,
                         widthSelector: ".grid-item .product-image",
                         ratioWrapper: window.images_size
                     })
+                    */
                 }
             }
             bar.replaceWith(i);
@@ -363,11 +365,13 @@
        
         goResizeImage: function() {
             if (window.product_image_resize) {
+                /* FIXME
                 $(".product-image img").fakecrop({
                     fill: window.images_size.is_crop,
                     widthSelector: ".grid-item .grid-image",
                     ratioWrapper: window.images_size
                 })
+                */
             }
         },
  

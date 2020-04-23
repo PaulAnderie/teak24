@@ -9,10 +9,14 @@
 {%endif %}
 {{ 'owl.carousel.min.js' | asset_url | script_tag }}
 {% if settings.product_image_resize %}
+    {% if false %}
 {{ 'jquery.fakecrop.js' | asset_url | script_tag }}
+    {% endif %}
 {% endif %}
 {% if settings.product_image_crop %}
+    {% if false %}
 {{ 'jquery.fakecrop.js' | asset_url | script_tag }}
+    {% endif %}
 {% endif %}
 {% if settings.enable_multiple_currencies %}
 {%  include 'new-currency' %}

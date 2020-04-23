@@ -31,17 +31,19 @@
     jQuery('#search-top .search-form').fadeOut('300');
   });
 
-  if (jQuery(window).width() < 992) {
     jQuery('.typo-header-cart a#cartToggle').click(function(){
-      jQuery('#dropdown-cart').addClass('active');
-      jQuery('body').addClass('show-cart');
+      if (jQuery(window).width() < 992) {
+          jQuery('#dropdown-cart').addClass('active');
+          jQuery('body').addClass('show-cart');
+      }
     });
     jQuery('.close-cart i').click(function(){
-      jQuery('#dropdown-cart').removeClass('active');
-      jQuery('body').removeClass('show-cart');
+      if (jQuery(window).width() < 992) {
+          jQuery('#dropdown-cart').removeClass('active');
+          jQuery('body').removeClass('show-cart');
+      }
     });
 
-  }
   jQuery(window).scroll(function() {
     if (jQuery(this).scrollTop() > 200) {
       jQuery("#back-top").fadeIn()
