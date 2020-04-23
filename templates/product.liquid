@@ -165,20 +165,10 @@
 
 
                                             <span class="product-inventory">
-                                                {% if product.selected_or_first_available_variant.inventory_management %}
                                                     {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
-                                                    {% if first_inventory > 0 %}
-                                                        {% if first_inventory < 3 %}
-                                                            <span class="fewavailable">Nur noch wenige verfügbar</span>
-                                                        {% else %}
-                                                            <span class="nowavailable">Sofort verfügbar</span>
-                                                        {% endif %}
-                                                    {% else %}
-                                                        <span class="notavailable">Zurzeit nicht verfügbar</span>
-                                                    {% endif %}
-                                                {% else %}
-                                                    <span class="nowavailable">Sofort verfügbar</span>
-                                                {% endif %}
+                                                    <span class="nowavailable" {% if first_inventory < 3 %} style="display:none;"{% endif %} >Sofort verfügbar</span>
+                                                    <span class="fewavailable" {% if first_inventory < 1 or first_inventory > 2 %} style="display:none;" {% endif %}>Nur noch wenige verfügbar</span>
+                                                    <span class="notavailable" {% if first_inventory > 0 %} style="display:none;"{% endif %}>Zurzeit nicht verfügbar</span>
                                             </span>
                                         </div>
                                     {% endif %}
@@ -430,36 +420,41 @@ var selectCallback = function(variant, selector) {
     }
 
 
+
     if (variant.sku) {
         // SKU
         jQuery(".product-sku span.sku").text(variant.sku);
 
         var myMeta = metaData[variant.sku];
-        var availabilityText = '<span class="notavailable">Zurzeit nicht verfügbar</span>';
+        var availabilityClass = '.notavailable';
         if(variant.available || myMeta.inventory_quantity > 0) {
             if(myMeta.inventory_quantity < 3) {
-                availabilityText = '<span class="fewavailable">Nur noch wenige verfügbar</span>';
+                availabilityClass = '.fewavailable';
             } else {
-                availabilityText = '<span class="nowavailable">Sofort verfügbar</span>';
+                availabilityClass = '.nowavailable';
             }
+        }
+        if (variant.inventory_management == null) {
+            availabilityClass = '.nowavailable';
         }
 
         // QUANTITY
         {% if settings.display_availability %}
+            // ist manchmal false
+        {% endif %}
             if (variant.inventory_management!=null) {
-                jQuery(".product-inventory span").html(availabilityText);
+                jQuery(".product-inventory *").hide().filter(availabilityClass).show();
             }
-    {% endif %}
 
         // SPECS
         var attrs = ["length", "width", "depth", "height", "seatingheight", "seatingdepth", "form", "feature"];
         for (var i in attrs) {
             var attr = attrs[i];
             if(myMeta.meta[attr]) {
-                console.log("show",attr);
+//                console.log("show",attr);
                 jQuery(".meta.specs."+attr).show().find("span").text(myMeta.meta[attr]);
             } else {
-                console.log("hide",attr);
+//                console.log("hide",attr);
                 jQuery(".meta.specs."+attr).hide();
             }
         }
