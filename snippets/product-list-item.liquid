@@ -47,7 +47,7 @@ Set a class for sold-out and on-sale items
       <img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
     </a>
 
-    {% if lable_sale or lable_out %}
+    {% if lable_sale %}
     <div class="product-label">
       {% if lable_sale %}
       <span>{{'typo_product.sale' | t}}</span>
