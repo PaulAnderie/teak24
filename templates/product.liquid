@@ -130,6 +130,8 @@
                                 {% endif %}
                                         <span class="price on-sale" itemprop="price">{{ product.price | money }}</span>
                                 </div>
+                                <div class="price-info">inkl. MwSt. <a href="/pages/versand">zzgl. Versandkosten</a></div>
+                                <div style="clear:both;"></div>
                                 
 
                                 {% if product.available %} 
@@ -159,7 +161,9 @@
                                 <li>
                                     {% if settings.display_availability or settings.display_product_type or settings.display_vendor %}
 
+                                        <!-- label ausblenden
                                         <span class="fa-li"><i class="fa fa-check"></i></span><strong>Verfügbarkeit</strong> 
+                                        -->
                                         <div class="availability">
 
 
@@ -258,6 +262,15 @@
 
 <script>
     var productMetaData = {{ product.metafields.specs | json }};
+    {% for metaf in product.metafields %}
+    console.log("product metafields:", {{ metaf | json }} );
+    {% endfor %}
+    {% for variant in product.variants %}
+        console.log("variant", {{ variant.sku | json }}, "metafs:");
+        {% for metaf in variant.metafields %}
+            console.log("variant", {{ variant.sku | json }}, "metaf", {{ metaf | json }} );
+        {% endfor %}
+    {% endfor %}
 </script>
 
 {% capture 'meta_data' %}
@@ -332,7 +345,7 @@ function changeslide() {
             })
                 .done(function( data ) {              
                     for(i=0;i<data.variants.length;i++){
-                        if(data.variants[i].option1 == b){
+                        if(data.variants[i].option1 == b && data.variants[i].featured_image != null){
                             $("#product_owl").find("img").each(function(){
                                 var mainImgSrc = data.variants[i].featured_image.src;
                                 var prefix = data.variants[i].featured_image.src.split("//")[0].length;
