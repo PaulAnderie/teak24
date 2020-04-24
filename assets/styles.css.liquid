@@ -1109,6 +1109,13 @@ body .spr-icon-star-empty:before{  opacity:0.8;  content: '\e800';color:#888;}
   -moz-opacity: 0.6;       /* mozilla, netscape */
   opacity: 0.6;           /* fx, safari, opera */
 }
+
+/* quickfix for broken quickview variants! 
+.product-quickview .swatch-element:not(:first-child) {
+    display:none;
+}
+*/
+
 /* Tooltips */
 
 .swatch .tooltip:before { bottom:-20px; content:" "; display:block; height:20px; left:0; position:absolute; width:100%; }
