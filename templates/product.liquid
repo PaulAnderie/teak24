@@ -494,9 +494,12 @@ var selectCallback = function(variant, selector) {
         if(myMeta.shipping.cost) {
             jQuery(".meta.shipping.cost").text(myMeta.shipping.cost);
         } else {
-            jQuery(".meta.shipping.cost").text("unbekannt");
+            if(productMetaData.shipping.cost) {
+                jQuery(".meta.shipping.cost").text(productMetaData.shipping.cost);
+            } else {
+                jQuery(".meta.shipping.cost").html('<a href="/page/versand">Versandinformationen</a>');
+            }
         }
-
     }
 
     if(variant.weight) {
