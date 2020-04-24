@@ -178,11 +178,17 @@
 
 
                                 </li>
-                            <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - <span class="meta shipping time">{% if product.metafields.shipping.time %}{{ product.metafields.shipping.time }}{% else %}<a href="/page/versand">Versandinformationen</a>{% endif %}</span></li>
+                            <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - <span class="meta shipping time">
+                                {% if first_inventory == 0 and product.tags     contains "kissen" %}
+                                    3 - 4 Wochen
+                                {% else %}
+                                {% if product.metafields.shipping.time %}{{ product.metafields.shipping.time }}{% else %}<a href="/page/versand">Versandinformationen</a>{% endif %}
+                                {% endif %}
+                                    </span></li>
                             <li><span class="fa-li"><i class="fa fa-history"></i></span><strong>Versandkosten</strong> - <span class="meta shipping cost">{% if product.metafields.shipping.cost %}{{ product.metafields.shipping.cost }}{% else %}<a href="/page/versand">Versandinformationen</a>{% endif %}</span></li>
                             </ul>
                         </div>
-
+                             
 
                         <div class="product_socials_wrapper_inner" style="font-size:20px;"> 
                             <h5>Produkt weiterempfehlen: </h5>
@@ -268,7 +274,8 @@
         {{ variant.sku | json }}: {
         specs: {{ variant.metafields.specs | json }},
         shipping: {{ variant.metafields.shipping | json }},
-        inventory_quantity: {{ variant.inventory_quantity | json }}
+        inventory_quantity: {{ variant.inventory_quantity | json }},
+        is_pillow_empty: {% if variant.inventory_quantity == 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
         }
         {% unless forloop.last %},{% endunless %}
     {% endfor %}
@@ -490,6 +497,9 @@ var selectCallback = function(variant, selector) {
             } else {
                 jQuery(".meta.shipping.time").html('<a href="/page/versand">Versandinformationen</a>');
             }
+        }
+        if(myMeta.is_pillow_empty) {
+            jQuery(".meta.shipping.time").text("3 - 4 Wochen");
         }
         if(myMeta.shipping.cost) {
             jQuery(".meta.shipping.cost").text(myMeta.shipping.cost);
