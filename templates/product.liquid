@@ -125,7 +125,7 @@
                                 </div>
 
                                 <div class="prices">
-                                    {% if product.compare_at_price <= product.price %}
+                                    {% if product.compare_at_price > product.price %}
                                     <span class="compare-price">{{ product.compare_at_price_max | money }}</span>
                                 {% endif %}
                                         <span class="price on-sale" itemprop="price">{{ product.price | money }}</span>
@@ -221,8 +221,10 @@
                                 <div class="meta specs width" {% unless product.metafields.specs.width %}style="display:none;"{% endunless %}>Breite: <span>{{ product.metafields.specs.width }}</span> cm</div>
                                 <div class="meta specs depth" {% unless  product.metafields.specs.depth %}style="display:none;"{% endunless %}>Tiefe: <span>{{ product.metafields.specs.depth }}</span> cm</div>
                                 <div class="meta specs height" {% unless  product.metafields.specs.height %}style="display:none;"{% endunless  %}>Höhe: <span>{{ product.metafields.specs.height }}</span> cm</div>
+                                <div class="meta specs diameter" {% unless  product.metafields.specs.diameter %}style="display:none;"{% endunless  %}>Durchmesser: <span>{{ product.metafields.specs.diameter }}</span> cm</div>
                                 <div class="meta specs seatingheight" {% unless  product.metafields.specs.seatingheight %}style="display:none;"{% endunless  %}>Sitzhöhe: <span>{{ product.metafields.specs.seatingheight }}</span> cm</div>
                                 <div class="meta specs seatingdepth" {% unless  product.metafields.specs.seatingdepth %}style="display:none;"{% endunless  %}>Sitztiefe: <span>{{ product.metafields.specs.seatingdepth }}</span> cm</div>
+                                <div class="meta specs maxlength" {% unless  product.metafields.specs.maxlength %}style="display:none;"{% endunless  %}>Max. Ausziehlänge: <span>{{ product.metafields.specs.maxlength }}</span> cm</div>
                                 <div class="meta weight" {% unless  product.weight %}style="display:none;"{% endunless  %}>Gewicht: <span>{{product.weight / 1000 }}</span> kg</div>
                                 <div class="meta specs form" {% unless  product.metafields.specs.form %}style="display:none;"{% endunless  %}>Form: <span>{{ product.metafields.specs.form }}</span></div>
                                 <div class="meta specs feature" {% unless  product.metafields.specs.feature %}style="display:none;"{% endunless  %}>Funktion: <span>{{ product.metafields.specs.feature }}</span></div>
@@ -260,18 +262,6 @@
 
 </div>
 
-<script>
-    var productMetaData = {{ product.metafields.specs | json }};
-    {% for metaf in product.metafields %}
-    console.log("product metafields:", {{ metaf | json }} );
-    {% endfor %}
-    {% for variant in product.variants %}
-        console.log("variant", {{ variant.sku | json }}, "metafs:");
-        {% for metaf in variant.metafields %}
-            console.log("variant", {{ variant.sku | json }}, "metaf", {{ metaf | json }} );
-        {% endfor %}
-    {% endfor %}
-</script>
 
 {% capture 'meta_data' %}
     {% for variant in product.variants %}
@@ -285,7 +275,23 @@
 {% endcapture %}
 
 <script>
+    console.log("product:", {{ product | json }} );
+    var productMetaData = {
+        specs: {{ product.metafields.specs | json }},
+        shipping: {{ product.metafields.shipping | json }}
+    };
+    console.log("productMetaData:", productMetaData);
+    {% for metaf in product.metafields %}
+    console.log("product metafields:", {{ metaf | json }} );
+    {% endfor %}
+    {% for variant in product.variants %}
+        console.log("variant", {{ variant.sku | json }}, "metafs:");
+        {% for metaf in variant.metafields %}
+            console.log("variant", {{ variant.sku | json }}, "metaf", {{ metaf | json }} );
+        {% endfor %}
+    {% endfor %}
     var metaData = { {{ meta_data }} };
+    console.log("variant meta:", metaData);
 </script>
 
 
@@ -465,7 +471,7 @@ var selectCallback = function(variant, selector) {
             }
 
         // SPECS
-        var attrs = ["length", "width", "depth", "height", "seatingheight", "seatingdepth", "form", "feature"];
+        var attrs = ["length", "width", "depth", "height", "seatingheight", "seatingdepth", "maxlength", "diameter", "form", "feature"];
         for (var i in attrs) {
             var attr = attrs[i];
             if(myMeta.specs[attr]) {
@@ -479,7 +485,11 @@ var selectCallback = function(variant, selector) {
         if(myMeta.shipping.time) {
             jQuery(".meta.shipping.time").text(myMeta.shipping.time);
         } else {
-            jQuery(".meta.shipping.time").text("unbekannt");
+            if(productMetaData.shipping.time) {
+                jQuery(".meta.shipping.time").text(productMetaData.shipping.time);
+            } else {
+                jQuery(".meta.shipping.time").html('<a href="/page/versand">Versandinformationen</a>');
+            }
         }
         if(myMeta.shipping.cost) {
             jQuery(".meta.shipping.cost").text(myMeta.shipping.cost);
