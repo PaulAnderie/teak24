@@ -178,8 +178,8 @@
 
 
                                 </li>
-                            <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - <span class="meta shipping time">{% if product.metafields.shipping.time %}{{ product.metafields.shipping.time }}{% else %}unbekannt{% endif %}</span></li>
-                            <li><span class="fa-li"><i class="fa fa-history"></i></span><strong>Versandkosten</strong> - <span class="meta shipping cost">{% if product.metafields.shipping.cost %}{{ product.metafields.shipping.cost }}{% else %}unbekannt{% endif %}</span></li>
+                            <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - <span class="meta shipping time">{% if product.metafields.shipping.time %}{{ product.metafields.shipping.time }}{% else %}<a href="/page/versand">Versandinformationen</a>{% endif %}</span></li>
+                            <li><span class="fa-li"><i class="fa fa-history"></i></span><strong>Versandkosten</strong> - <span class="meta shipping cost">{% if product.metafields.shipping.cost %}{{ product.metafields.shipping.cost }}{% else %}<a href="/page/versand">Versandinformationen</a>{% endif %}</span></li>
                             </ul>
                         </div>
 
