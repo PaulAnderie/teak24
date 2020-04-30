@@ -144,14 +144,14 @@
     "shop_by_color_text_9": "",
     "shop_by_color_text_10": "",
     "enable_shop_by_tags_2": true,
-    "shop_by_tags_2_title": "Länge",
-    "shop_by_tags_2_list_tags": "40 cm, 50 cm, 70 cm, 80 cm, 95 cm,100 cm, 155 cm, 120 cm, 126 cm, 165 cm, 180 cm, 195 cm, 220 cm",
+    "shop_by_tags_2_title": "Form",
+    "shop_by_tags_2_list_tags": "rund, rechteckig, quadratisch, oval",
     "enable_shop_by_tags_3": true,
-    "shop_by_tags_3_title": "Preis",
-    "shop_by_tags_3_list_tags": "€0 - 100, €100 - 250,€0 - 250 , €250 - 400, €400 - 600, €600 - 1.000, €1.000 - 3.000",
+    "shop_by_tags_3_title": "Funktion",
+    "shop_by_tags_3_list_tags": "klappbar, ausziehbar, stapelbar, demontierbar, verstellbar",
     "enable_shop_by_tags_4": true,
-    "shop_by_tags_4_title": "Form",
-    "shop_by_tags_4_list_tags": "rund, rechteckig, quadratisch, oval",
+    "shop_by_tags_4_title": "Preis",
+    "shop_by_tags_4_list_tags": "€0 - 100, €100 - 250,€0 - 250 , €250 - 400, €400 - 600, €600 - 1.000, €1.000 - 3.000",
     "enable_image_collection": true,
     "enable_wishlist": true,
     "display_image_cat": false,
@@ -1090,7 +1090,7 @@
           "1587465367855": {
             "type": "image",
             "settings": {
-              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Strandkorb2020-05.png",
+              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Strandkorb2020-06.png",
               "option_vertical_align": "top",
               "option_align_text": "right",
               "slide_title": "Teak-Strandkörbe",
@@ -1098,9 +1098,22 @@
               "slide_button": "Jetzt entdecken!",
               "slide_link_1": "\/collections\/strandkoerbe"
             }
+          },
+          "1588072045640": {
+            "type": "image",
+            "settings": {
+              "slideshow": "shopify:\/\/shop_images\/Teak24-Teak-Gartenmoebel-Deckchair-01_1.jpg",
+              "option_vertical_align": "top",
+              "option_align_text": "right",
+              "slide_title": "Teakholz Liegen und Deckchairs",
+              "slide_text_1": "Urlaub im eigenen Garten. Mit der eigenen Liege oder Deckchairs ist dies möglich.",
+              "slide_button": "Zu den Liegen",
+              "slide_link_1": "https:\/\/teak24.de\/collections\/gartenliegen-deckchairs"
+            }
           }
         },
         "block_order": [
+          "1588072045640",
           "1587465367855"
         ],
         "settings": {
@@ -1288,7 +1301,7 @@
         "type": "blog-template",
         "settings": {
           "display_blog_banner": true,
-          "blog_banner_image": ""
+          "blog_banner_image": "shopify:\/\/shop_images\/Sidebar-Aktionsbild-Rabatt2020.jpg"
         }
       },
       "article-template": {
@@ -1398,15 +1411,15 @@
           "1587375837972": {
             "type": "tabs",
             "settings": {
-              "items_tab": "Stühle & Sessel",
-              "tabnew_collection": "gartenstuhle-sessel"
+              "items_tab": "Stühle",
+              "tabnew_collection": "gartenstuehle-sessel"
             }
           },
           "1587375850164": {
             "type": "tabs",
             "settings": {
-              "items_tab": "Strandkörbe",
-              "tabnew_collection": "strandkoerbe"
+              "items_tab": "Kissen",
+              "tabnew_collection": "gartenzubehor"
             }
           }
         },
