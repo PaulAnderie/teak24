@@ -93,7 +93,7 @@ Set a class for sold-out and on-sale items
           <input class="btn" type="button" onclick="window.location.href='{{item.url}}'" value="Auswählen" />
           {% else %}
           <input type="hidden" name="id" value="{{ item.variants[0].id }}" />      
-          <input class="btn add-to-cart-btn" type="submit" value="Add to Cart" />
+          <input class="btn add-to-cart-btn" type="submit" value="In den Warenkorb" />
           {% endif %}
           {% endif %}
         </form>         
