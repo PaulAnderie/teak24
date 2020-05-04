@@ -152,7 +152,7 @@
     "enable_shop_by_tags_4": true,
     "shop_by_tags_4_title": "Preis",
     "shop_by_tags_4_list_tags": "€0 - 100, €100 - 250,€0 - 250 , €250 - 400, €400 - 600, €600 - 1.000, €1.000 - 3.000",
-    "enable_image_collection": true,
+    "enable_image_collection": false,
     "enable_wishlist": true,
     "display_image_cat": false,
     "collection_results_per_page": "18",
@@ -1087,18 +1087,6 @@
       "1492612501600": {
         "type": "typo-slideshow",
         "blocks": {
-          "1587465367855": {
-            "type": "image",
-            "settings": {
-              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Strandkorb2020-06.png",
-              "option_vertical_align": "top",
-              "option_align_text": "right",
-              "slide_title": "Teak-Strandkörbe",
-              "slide_text_1": "Die Teak24 Strandkörbe, aus zertifizierten Teakholz gefertigt, weisen eine hochwertige Qualität aus und lassen keine Wünsche offen.",
-              "slide_button": "Jetzt entdecken!",
-              "slide_link_1": "\/collections\/strandkoerbe"
-            }
-          },
           "1588072045640": {
             "type": "image",
             "settings": {
@@ -1109,6 +1097,18 @@
               "slide_text_1": "Urlaub im eigenen Garten. Mit der eigenen Liege oder Deckchairs ist dies möglich.",
               "slide_button": "Zu den Liegen",
               "slide_link_1": "https:\/\/teak24.de\/collections\/gartenliegen-deckchairs"
+            }
+          },
+          "1587465367855": {
+            "type": "image",
+            "settings": {
+              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Strandkorb2020-06.png",
+              "option_vertical_align": "top",
+              "option_align_text": "right",
+              "slide_title": "Teak-Strandkörbe",
+              "slide_text_1": "Die Teak24 Strandkörbe, aus zertifizierten Teakholz gefertigt, weisen eine hochwertige Qualität aus und lassen keine Wünsche offen.",
+              "slide_button": "Jetzt entdecken!",
+              "slide_link_1": "\/collections\/strandkoerbe"
             }
           }
         },
@@ -1514,7 +1514,7 @@
           "message": true,
           "home_page_only": false,
           "header_padding": 0,
-          "message_text": "🎁 15% geschenkt mit dem Gutschein-Code \"zuhause15\"",
+          "message_text": "🎁 10% geschenkt mit dem Gutschein-Code \"zuhause10\"",
           "free_shipping_countdown": false,
           "free_shipping_threshold": 25,
           "free_shipping_notqualified": "Add just [price] to your cart to receive free shipping!",
