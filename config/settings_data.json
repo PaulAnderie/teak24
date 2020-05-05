@@ -1514,7 +1514,7 @@
           "message": true,
           "home_page_only": false,
           "header_padding": 0,
-          "message_text": "🎁 10% geschenkt mit dem Gutschein-Code \"zuhause10\"",
+          "message_text": "🎁 10% geschenkt mit dem Gutschein-Code \"zuhause10\" --- *außer auf bereits reduzierte Ware",
           "free_shipping_countdown": false,
           "free_shipping_threshold": 25,
           "free_shipping_notqualified": "Add just [price] to your cart to receive free shipping!",
