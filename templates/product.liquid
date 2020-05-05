@@ -180,7 +180,7 @@
 
                                 </li>
                             <li><span class="fa-li"><i class="fa fa-truck"></i></span><strong>Lieferzeit</strong> - <span class="meta shipping time">
-                                {% if first_inventory == 0 and product.tags     contains "kissen" %}
+                                {% if first_inventory <= 0 and product.tags     contains "kissen" %}
                                     3 - 4 Wochen
                                 {% else %}
                                 {% if product.metafields.shipping.time %}{{ product.metafields.shipping.time }}{% else %}<a href="/page/versand">Versandinformationen</a>{% endif %}
@@ -413,7 +413,7 @@
         specs: {{ variant.metafields.specs | json }},
         shipping: {{ variant.metafields.shipping | json }},
         inventory_quantity: {{ variant.inventory_quantity | json }},
-        is_pillow_empty: {% if variant.inventory_quantity == 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
+        is_pillow_empty: {% if variant.inventory_quantity <= 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
         }
         {% unless forloop.last %},{% endunless %}
     {% endfor %}
