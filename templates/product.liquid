@@ -168,7 +168,7 @@
 
 
                                             <span class="product-inventory">
-                                                    {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity %}
+                                                    {% assign first_inventory = product.selected_or_first_available_variant.inventory_quantity | plus: 0 %}
 
                                                     <span class="availability nowavailable" {% if first_inventory < 3 %} style="display:none;"{% endif %} ><span class="fa-li"><i class="fa fa-check"></i></span>Sofort verfügbar</span>
                                                     <span class="availability fewavailable" {% if first_inventory < 1 or first_inventory > 2 %} style="display:none;" {% endif %}><span class="fa-li"><i class="fa fa-check"></i></span>Nur noch wenige verfügbar</span>
@@ -413,7 +413,7 @@
         specs: {{ variant.metafields.specs | json }},
         shipping: {{ variant.metafields.shipping | json }},
         inventory_quantity: {{ variant.inventory_quantity | json }},
-        is_pillow_empty: {% if variant.inventory_quantity <= 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
+        is_pillow_empty: {% if variant.inventory_quantity | plus: 0 <= 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
         }
         {% unless forloop.last %},{% endunless %}
     {% endfor %}
