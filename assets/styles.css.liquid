@@ -1391,6 +1391,16 @@ table.wishlist-product .a-center { text-align: center; }
 .grid-item.price-product{font-size: 15px;font-weight: 500;color: #666666;}
 .grid-item .spr-badge .spr-icon:before{color: #222;}
 .spr-badge{font-size:12px;}
+
+.spr-badge, .spr-icon-star {
+    color: #e7711b;
+}
+.spr-badge::before {
+    content: attr(data-rating);
+    display: inline;
+    padding-right: 1em;
+}
+
 .content-bottom .contact-form{float:left}
 .content-bottom .add-to-cart{display: inline-block;float:left;}
 .content-bottom .wishlist {border: 1px solid #999;color: #999;display: inline-block;float: left;font-size: 17px;  height: 43px;line-height: normal;margin-left: 10px;padding: 10px 8px;width: 43px;}
