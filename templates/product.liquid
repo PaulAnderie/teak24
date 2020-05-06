@@ -409,11 +409,12 @@
 
 {% capture 'meta_data' %}
     {% for variant in product.variants %}
+        {%- assign inventory_quantity = variant.inventory_quantity | plus: 0 %}
         {{ variant.sku | json }}: {
         specs: {{ variant.metafields.specs | json }},
         shipping: {{ variant.metafields.shipping | json }},
-        inventory_quantity: {{ variant.inventory_quantity | json }},
-        is_pillow_empty: {% if variant.inventory_quantity | plus: 0 <= 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
+        inventory_quantity: {{ inventory_quantity | json }},
+        is_pillow_empty: {% if inventory_quantity <= 0 and product.tags contains "kissen" %}true{% else %}false{% endif %}
         }
         {% unless forloop.last %},{% endunless %}
     {% endfor %}
