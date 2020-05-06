@@ -597,7 +597,7 @@ var selectCallback = function(variant, selector) {
 
         var myMeta = metaData[variant.sku];
         var availabilityClass = '.notavailable';
-        if(variant.available || myMeta.inventory_quantity > 0) {
+        if(myMeta.inventory_quantity > 0) {
             if(myMeta.inventory_quantity < 3) {
                 availabilityClass = '.fewavailable';
             } else {
