@@ -1519,10 +1519,10 @@
           "free_shipping_threshold": 25,
           "free_shipping_notqualified": "Add just [price] to your cart to receive free shipping!",
           "free_shipping_qualified": "Your order qualifies for free shipping!",
-          "message_link": "",
-          "color_bg": "#353535",
+          "message_link": "shopify:\/\/pages\/gutschein-bedingungen",
+          "color_bg": "#161616",
           "color_text": "#ffffff",
-          "color_text_hover": "#eeeeee",
+          "color_text_hover": "#e3e3e3",
           "font_size": 14
         }
       }
