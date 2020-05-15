@@ -1102,13 +1102,13 @@
           "1587465367855": {
             "type": "image",
             "settings": {
-              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Strandkorb2020-06.png",
+              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Versand.png",
               "option_vertical_align": "top",
               "option_align_text": "right",
-              "slide_title": "Teak-Strandkörbe",
-              "slide_text_1": "Die Teak24 Strandkörbe, aus zertifizierten Teakholz gefertigt, weisen eine hochwertige Qualität aus und lassen keine Wünsche offen.",
-              "slide_button": "Jetzt entdecken!",
-              "slide_link_1": "\/collections\/strandkoerbe"
+              "slide_title": "",
+              "slide_text_1": "",
+              "slide_button": "",
+              "slide_link_1": ""
             }
           }
         },
