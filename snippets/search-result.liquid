@@ -43,7 +43,7 @@ Set a class for sold-out and on-sale items
     {% endcomment %}
     <div class="product-image">
       <a href="{{ item.url | within: collection }}" class="product-list-thumb product-grid-image">
-        <img src="{{ item.featured_image.src | product_img_url: 'medium' }}" alt="{{ item.featured_image.alt | escape }}"> 
+        <img src="{{ item.featured_image.src | product_img_url: 'grande' }}" alt="{{ item.featured_image.alt | escape }}"> 
       </a>
       {% if on_sale or sold_out %}
       <div class="product-label">
