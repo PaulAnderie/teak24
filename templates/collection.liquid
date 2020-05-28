@@ -55,6 +55,9 @@
       {% capture grid_item_width %}{{ colProduct }}{% endcapture %}
       
         {% for product in collection.products %}
+        {% unless product.available %}
+            {% continue %}
+        {% endunless %}
         {% assign modcol = forloop.index | modulo:columns_product %}
         {% if modcol == 1 %}
       
