@@ -1389,16 +1389,21 @@ table.wishlist-product .a-center { text-align: center; }
 .grid-item:hover .product-image .add-to-link .detail{width: 36px;height: 36px;display: inline-block;padding: 0;line-height: 36px;border: 2px solid #ffffff;text-align: center;vertical-align: middle;}
 .grid-item:hover .product-image .add-to-link .detail{margin-left: 7px;}
 .grid-item.price-product{font-size: 15px;font-weight: 500;color: #666666;}
-.grid-item .spr-badge .spr-icon:before{color: #e7711b !important;}
+.grid-item .spr-badge .spr-icon-star:before{color: #e7711b ;}
+.grid-item .spr-badge .spr-icon-star-half-alt:before{color: #e7711b ;}
 .spr-badge{font-size:12px;}
 
-.spr-badge, .spr-icon-star {
+.spr-badge, .spr-icon-star, .spr-icon-star-half-alt {
     color: #e7711b !important;
 }
 .spr-badge::before {
     content: attr(data-rating) !important;
-    display: inline !important;
+    display: inline-block !important;
     padding-right: 1em !important;
+    line-height: 1em;
+    width: 3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .content-bottom .contact-form{float:left}
