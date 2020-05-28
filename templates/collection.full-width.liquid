@@ -42,6 +42,9 @@
         {% if collection.products.size > 0 %}      
         {% paginate collection.products by product_per_page %}  
         {% for product in collection.products %}
+        {% unless product.available %}
+            {% continue %}
+        {% endunless %}
         <div class="product-layout-item product-2">
         {% include 'product-grid-item-category' %}
         </div>

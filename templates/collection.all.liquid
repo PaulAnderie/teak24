@@ -32,6 +32,9 @@
       {% if collection.products.size > 0 %}      
       {% paginate collection.products by 50 %}  
       {% for product in collection.products %}
+        {% unless product.available %}
+            {% continue %}
+        {% endunless %}
       {% include 'product-grid-item-category' %}
       {% endfor %}
       {% endpaginate %}

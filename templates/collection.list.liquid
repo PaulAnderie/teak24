@@ -37,6 +37,9 @@
         See the snippet 'product-grid-item' for the layout.
       {% endcomment %}
       {% for product in collection.products %}
+        {% unless product.available %}
+            {% continue %}
+        {% endunless %}
       {% include 'product-list-item' %}
       {% else %}
       <p style="text-align: center;">{{'typo_collection.notice' | t }}</p>
