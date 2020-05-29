@@ -46,9 +46,9 @@
                 </a>
                 <p>
                   {% if item.product.variants.size > 1 %}
-                  <span class="cart-item-sku">{{ item.variant.sku }}</span>
+                  <span class="cart-item-sku">Art.-Nr. {{ item.variant.sku }}</span>
                   {% else %}
-                  <span class="cart-item-sku">{{ item.sku }}</span>
+                  <span class="cart-item-sku">Art.-Nr. {{ item.sku }}</span>
                   {% endif %}
                 </p>
               </td>
