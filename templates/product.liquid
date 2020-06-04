@@ -716,7 +716,13 @@ jQuery(function($) {
 
     {% if settings.display_product_reviews %}  
         var reviewsTimeout = setInterval(function() {
-            if (jQuery(".spr-badge-caption").length>0) {jQuery(".spr-badge-caption").on('click', function() {jQuery('html,body').animate({scrollTop: jQuery(".panel:last").offset().top},'400');jQuery("#collapse-tab4").collapse('show');});clearInterval(reviewsTimeout);}
+            if (jQuery(".spr-badge-caption").length>0) {
+                jQuery(".spr-badge-caption").on('click', function() {
+                    console.log(".spr-badge-caption CLICK");
+                    jQuery('html,body').animate({scrollTop: jQuery(".panel:last").offset().top},'400');jQuery("#collapse-tab4").collapse('show');
+                });
+                clearInterval(reviewsTimeout);
+            }
         },1000);
             {% endif %}
 });
