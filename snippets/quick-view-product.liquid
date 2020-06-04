@@ -48,7 +48,7 @@ var selectCallbackQuickview = function(variant, selector) {
         totalPrice = productItem.find('.total-price span');
     if (variant) {
         if (variant.available) {
-            addToCart.removeClass('disabled').removeAttr('disabled').text('Add to Cart');
+            addToCart.removeClass('disabled').removeAttr('disabled').text('In den Warenkorb');
         }
         else {
             addToCart.val('Sold Out').addClass('disabled').attr('disabled', 'disabled');
