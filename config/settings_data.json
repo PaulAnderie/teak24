@@ -176,7 +176,7 @@
     "items_bestseller1": "Artikel",
     "bestseller_collection1": "gartenzubehor",
     "enable_block_image_colleft": true,
-    "display_related_products": true,
+    "display_related_products": false,
     "related_products_title": "Das könnte Sie auch interessieren",
     "number_of_related_products": "5",
     "related_products_type": "tags",
@@ -1099,32 +1099,32 @@
               "slide_link_1": "https:\/\/teak24.de\/collections\/gartenliegen-deckchairs"
             }
           },
-          "1587465367855": {
+          "1591087223336": {
             "type": "image",
             "settings": {
-              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Versand.png",
+              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Strandkorb2020-07.png",
               "option_vertical_align": "top",
               "option_align_text": "right",
-              "slide_title": "",
-              "slide_text_1": "",
-              "slide_button": "",
-              "slide_link_1": ""
+              "slide_title": "Teakholz-Strandkörbe",
+              "slide_text_1": "Unsere Strandkörbe, aus hochwertigen Teakholz gefertigt, überzeugt durch Qualität und Funktionalität in vielfältigem Design.",
+              "slide_button": "Zu den Strandkörben",
+              "slide_link_1": "https:\/\/teak24.de\/collections\/strandkoerbe"
             }
           }
         },
         "block_order": [
           "1588072045640",
-          "1587465367855"
+          "1591087223336"
         ],
         "settings": {
           "home_block_slideshow": "0px 0px 0px 0px",
           "option_slideshow_layout": "slideshow_fullwidth",
           "slideshow_speed": "7000",
           "show_navigation": true,
-          "color_navigation": "#ffffff",
-          "color_navigation_bg": "rgba(0,0,0,0)",
-          "color_navigation_hover": "rgba(0,0,0,0)",
-          "color_navigation_bg_hover": "rgba(0,0,0,0)",
+          "color_navigation": "#222222",
+          "color_navigation_bg": "#fafafa",
+          "color_navigation_hover": "#fde12f",
+          "color_navigation_bg_hover": "#fafafa",
           "color_slide": "#ffffff",
           "color_slide_button_bg": "rgba(0,0,0,0)",
           "color_slide_button_text": "#ffffff",
@@ -1262,10 +1262,10 @@
           "footer_column_icon_title": "Mehr Inspirationen:",
           "footer_column_4_icon_1": "fa fa-facebook",
           "footer_column_4_icon_link_1": "https:\/\/www.facebook.com\/teak24.de",
-          "footer_column_4_icon_2": "",
-          "footer_column_4_icon_link_2": "",
-          "footer_column_4_icon_3": "",
-          "footer_column_4_icon_link_3": "",
+          "footer_column_4_icon_2": "fa fa-instagram",
+          "footer_column_4_icon_link_2": "https:\/\/www.instagram.com\/teak24.de\/",
+          "footer_column_4_icon_3": "fa fa-pinterest",
+          "footer_column_4_icon_link_3": "https:\/\/www.pinterest.de\/teak24\/",
           "footer_column_4_icon_4": "",
           "footer_column_4_icon_link_4": "",
           "footer_column_4_icon_5": "",
@@ -1315,7 +1315,7 @@
       "1500094757739": {
         "type": "typo-blog",
         "settings": {
-          "home_blog_margin": "0 0 6% 0",
+          "home_blog_margin": "2% 0 6% 0",
           "home_blog_title": "DAS TEAK24 MAGAZIN",
           "home_blog_sub_title": "Immer aktuell und voller vielseitiger Gartenideen. Lassen Sie sich in unserem Magazin inspirieren!",
           "display_blog_date": true,
@@ -1486,8 +1486,8 @@
           "1587377241986": {
             "type": "html",
             "settings": {
-              "code": "<div class=\"row\">\n  <div class=\"col-xs-12 col-md-5 col-sm-4\">\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0270\/2311\/4307\/files\/Teak24-Teamfoto-Familienbetrieb-01_1.png?v=1587413589\" alt=\"Teak24 Gründer und Tochter Familie Hövelmann\" width=\"85%\" height=\"auto\">\n\n<\/div>\n  <div class=\"col-xs-12 col-md-7 col-sm-8\">\n<h2 style=\" text-transform:=\" uppercase>Über Teak24\nUnser Familienunternehmen steht seid über 20 Jahren für Tradition, Qualität, Nachhaltigkeit &amp; Leidenschaft für Gartenmöbel. Die individuelle Beratung unserer Kunden &amp; die gemeinsame Suche nach den passenden Möbeln für Ihren Lieblingsplatz sind für uns besonders wichtig.  Darauf können Sie vertrauen.<br>\n<\/h2>\n<h3 style=\"margin-bottom:0; margin-top:7%;\">Teak24 Möbel – der individuelle Luxus<\/h3>\nBei uns finden Sie eine große Auswahl an Teak Gartenmöbeln wie z.B. Gartentische, Gartenstühle, Gartensessel, Gartenliegen oder Gartenbänke aus Teakholz.\nWir als Direktimporteur verkaufen unsere Artikel preiswert und ohne Zwischenhandel.\nDie Kontrolle fachkundiger Mitarbeiter im Herstellerland garantiert dabei eine konstante und erstklassige Produktqualität.\n<br>\n<h3 style=\"margin-bottom:0; margin-top:7%;\">Schaffen Sie Ihre Erholungsoase im eigenen Garten!<\/h3>\n\nGestalten Sie Ihre persönliche Wohlfühloase als Rückzugsort für entspannte Stunden und machen Sie Ihren Garten, die Terrasse oder den Balkon fit für die sonnige Jahreszeit.\n\nEin luxuriöser Strandkorb, eine Gartenbank, ein rustikaler Gartentisch oder ein Liegestuhl aus unbehandeltem, zertifiziertem Teakholz – zaubern Sie sich die perfekte Atmosphäre an Ihrem Lieblingsplatz.\nHochwertige, wetterfeste Kunststoffgeflecht-Möbel und passende Kissen und Auflagen finden Sie hierfür in unserem Sortiment.\nDas vielfältige Produktangebot von Teak24 bietet Ihnen Individualität in Gestaltung und Stil. Sie können sich bei Teak24 auf die hervorragende Qualität der hochwertigen und witterungsbeständigen Möbel und auf die Erfahrung und Fachkompetenz unserer Mitarbeiter verlassen.\n<\/div>\n<\/div>",
-              "width": "50%"
+              "code": "<div class=\"row\">\n  <div class=\"col-xs-12 col-md-5 col-sm-4\">\n<img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0270\/2311\/4307\/files\/Teak24-Teamfoto-Familienbetrieb-01_1.png?v=1587413589\" alt=\"Teak24 Gründer und Tochter Familie Hövelmann\" width=\"85%\" height=\"auto\" text-align=\"right\">\n\n<\/div>\n  <div class=\"col-xs-12 col-md-7 col-sm-8\">\n<h3>Über Teak24\nUnser Familienunternehmen steht seid über 20 Jahren für Tradition, Qualität, Nachhaltigkeit &amp; Leidenschaft für Gartenmöbel. Die individuelle Beratung unserer Kunden &amp; die gemeinsame Suche nach den passenden Möbeln für Ihren Lieblingsplatz sind für uns besonders wichtig.  Darauf können Sie vertrauen.<br>\n<\/h3>\n<h3 style=\"margin-bottom:0; margin-top:7%;\">Teak24 Möbel – der individuelle Luxus<\/h3>\nBei uns finden Sie eine große Auswahl an Teak Gartenmöbeln wie z.B. Gartentische, Gartenstühle, Gartensessel, Gartenliegen oder Gartenbänke aus Teakholz.\nWir als Direktimporteur verkaufen unsere Artikel preiswert und ohne Zwischenhandel.\nDie Kontrolle fachkundiger Mitarbeiter im Herstellerland garantiert dabei eine konstante und erstklassige Produktqualität.\n<br>\n<h3 style=\"margin-bottom:0; margin-top:7%;\">Schaffen Sie Ihre Erholungsoase im eigenen Garten!<\/h3>\n\nGestalten Sie Ihre persönliche Wohlfühloase als Rückzugsort für entspannte Stunden und machen Sie Ihren Garten, die Terrasse oder den Balkon fit für die sonnige Jahreszeit.\n\nEin luxuriöser Strandkorb, eine Gartenbank, ein rustikaler Gartentisch oder ein Liegestuhl aus unbehandeltem, zertifiziertem Teakholz – zaubern Sie sich die perfekte Atmosphäre an Ihrem Lieblingsplatz.\nHochwertige, wetterfeste Kunststoffgeflecht-Möbel und passende Kissen und Auflagen finden Sie hierfür in unserem Sortiment.\nDas vielfältige Produktangebot von Teak24 bietet Ihnen Individualität in Gestaltung und Stil. Sie können sich bei Teak24 auf die hervorragende Qualität der hochwertigen und witterungsbeständigen Möbel und auf die Erfahrung und Fachkompetenz unserer Mitarbeiter verlassen.\n<\/div>\n<\/div>",
+              "width": "66%"
             }
           }
         },
@@ -1511,7 +1511,7 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "settings": {
-          "message": true,
+          "message": false,
           "home_page_only": false,
           "header_padding": 0,
           "message_text": "🎁 10% geschenkt mit dem Gutschein-Code \"zuhause10\" --- *außer auf bereits reduzierte Ware",
