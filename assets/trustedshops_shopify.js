@@ -32,7 +32,8 @@
 
     if ( Shopify && Shopify.Checkout && Shopify.Checkout.OrderStatus) {
       // console.log('checkoutScript', 'we are on the checkout page ...');
-      if (!Shopify.checkout) {
+      // check if we are on the thankyou page to display the code only once Shopify.Checkout.page != "thank_you"!!!
+      if (!Shopify.checkout || Shopify && Shopify.Checkout && Shopify.Checkout.page != "thank_you") {
         // console.log('No object Shopify.checkout found');
       } else {
         var c = Shopify.checkout;
@@ -47,9 +48,9 @@
               // console.log('fetchData--', JSON.parse(xhr.response));
               var data = JSON.parse(xhr.response);
               addTsElements(c, data);
-              callback();
+              callback(null);
             } else {
-              callback();
+              callback(xhr.status);
               throw Error('Could not get order status: '+ xhr.status +'|'+ xhr.response);
             }
           }
@@ -65,8 +66,9 @@
     if (typeof addProductData === "function") {
       addProductData();
     }
-    addCheckoutData(oldSnippetPresent, function(){
-      
+    addCheckoutData(oldSnippetPresent, function(error){
+      if (!error) {
+        
 // Version 1.2
 // console.log("Trusted Shops Badge", "loaded...");
 ( function() {
@@ -85,6 +87,9 @@
   __ts.parentNode.insertBefore(_ts, __ts);
 })();
 
+      } else {
+        console.error("Error - Not adding a tsScript", error);
+      }
     });
 
     // add default styling to the productReviews

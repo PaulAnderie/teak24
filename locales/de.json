@@ -206,6 +206,10 @@
     "checkout": {
       "general": {
         "page_title": "Bezahlung"
+      },
+      "contact": {
+        "address_title": "Straße, Hausnummer",
+        "address1_label": "Straße, Hausnummer"
       }
     }
   },
