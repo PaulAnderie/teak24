@@ -1,3 +1,39 @@
+<div class="clearfix"></div>
+<div class="typo-block-icon" style="margin:{{section.settings.home_block_icon}};">
+  {% if section.settings.enable_block_footer_icon_full %}
+  <div class="">
+  {% else %}
+  <div class="container">
+    {% endif %}
+    <div class="block-icon-inner">
+    <div class="row" >
+      {% if section.blocks.size > 0 %}
+      {% for block in section.blocks %}
+      <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <div class="feature-box">
+            {% if block.settings.block_icon_1 != blank %}
+            <div class="typo-box-icon">
+              <i class="{{block.settings.block_icon_1}}"></i>
+            </div>
+            {% endif %}
+            <div class="typo-box-info">
+              <h4>{{block.settings.block_icon_title_1}}</h4>
+              <p>{{block.settings.block_icon_subtitle_1}}</p>
+            </div>
+          </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+    </div>
+    </div>
+  </div>
+<style>
+  .typo-box-info, .typo-box-info h4{color:{{section.settings.color_text }} }
+  .typo-box-icon i{ color:{{section.settings.color_icon}}; }
+  .typo-box-icon:hover i{ color:{{section.settings.color_icon_hover}};}
+</style>
+</div>
+      
 {% if section.settings.footer_layout == 'footer-layout-1' %}
 <footer class="typo-footer {{section.settings.footer_layout }}">
   <div class="container">
@@ -193,6 +229,40 @@
   {
     "name": "Typo - Footer",
     "settings": [
+      
+	 {
+        "type": "checkbox",
+        "id": "enable_block_home_icon_full",
+        "label": "Enable Fullwidth"
+      },
+	  {
+        "type": "text",
+        "id": "home_block_icon",
+        "label": "Margin",
+        "default": "0px 0px 0px 0px"
+      },
+      {
+        "type": "color",
+        "id": "color_icon",
+        "label": "Icon Label Color",
+        "default": "#fff",
+        "info": "Default Value: #fff"
+      },
+      {
+        "type": "color",
+        "id": "color_icon_hover",
+        "label": "Icon Hover Color",
+        "default": "#000",
+        "info": "Default Value: #000"
+      },
+  
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Text Color",
+        "default": "#2d2d2d",
+        "info": "Default Value: #2d2d2d"
+      },
 
       {
         "type": "select",
@@ -380,7 +450,50 @@
         "id": "footer_address_code",
         "label": "Footer Address Code"
       }
-	]
+	],
+    "blocks": [
+        {
+          "type": "block",
+          "name": "Block",
+          "settings": [
+          {
+            "type": "text",
+            "id": "block_icon_1",
+            "label": "Icon ",
+            "default": "fa fa-plane"
+          },
+          {
+            "type": "text",
+            "id": "block_icon_title_1",
+            "label": "Heading ",
+            "default": "Heading"
+          },
+          {
+            "type": "textarea",
+            "id": "block_icon_subtitle_1",
+            "label": "Subheading ",
+            "default": "subheading"
+          }
+         ]
+      }
+	],
+    "presets": [
+        {
+          "name": "Typo - Block Icon",
+          "category": "Text",
+          "blocks": [
+            {
+              "type": "block"
+            },
+            {
+              "type": "block"
+            },
+            {
+              "type": "block"
+            }
+          ]
+        }
+  	]
   }
 {% endschema %}
 
