@@ -7,6 +7,16 @@
          <div class="row" style="padding-right:10%;" id="header-top-cart">
              <div class="" id="header-top-custom-link">
                 <div class="header-custom-link-desktop">
+                   <div class="header-contact-info">
+                       <a href="/pages/ausstellung">
+                           <span>
+                               Service Telefon
+                               Mo-Fr. 10-17 Uhr:
+                               <i class="fa fa-phone"></i>
+                               {{ section.settings.header_text_phone }}
+                           </span>
+                       </a>
+                   </div>
                    <div class="desktop-currency">
                        {% include 'new-currency-top' %}
                    </div>
@@ -424,6 +434,11 @@
       "type": "image_picker",
       "id": "logo-sticky",
       "label": "Logo Sticky Image"
+    },
+    {
+      "type": "text",
+      "id": "header_text_phone",
+      "label": "Telefonnr. in Header"
     },
     {
       "type": "header",
