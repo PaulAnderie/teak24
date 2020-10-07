@@ -46,6 +46,11 @@
   {% comment %}
     Each result template, based on the grid_layout variable above
   {% endcomment %}
+  {% if paginate.pages > 1 %}
+  <div class="text-center">
+    {% include 'pagination-page' %}
+  </div>
+  {% endif %}
   <div class="product-list">
     {% if grid_results == false %}
     {% for item in search.results %}
