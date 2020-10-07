@@ -27,6 +27,11 @@
       Use class grid-uniform to have evenly sized columns clear
       each other properly at each breakpoint.
     {% endcomment %}
+    {% if paginate.pages > 1 %}
+    <div class="padding">
+      {% include 'pagination-page' %}
+    </div>
+    {% endif %}
     
     <div class="products-grid">
       {% if collection.products.size > 0 %}      
