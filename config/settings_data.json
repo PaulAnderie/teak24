@@ -1153,6 +1153,7 @@
           "logo": "shopify:\/\/shop_images\/Teak24-Logo-Verlauf-200px.png",
           "show_header_logo_ticky": false,
           "logo-sticky": "",
+          "header_text_phone": "0 28 21 \/ 45 02 50",
           "show_header_search": true,
           "show_header_text_left": ""
         }
@@ -1315,7 +1316,7 @@
           "footer_column_4_icon_link_2": "https:\/\/www.instagram.com\/teak24.de\/",
           "footer_column_4_icon_3": "fa fa-pinterest",
           "footer_column_4_icon_link_3": "https:\/\/www.pinterest.de\/teak24\/",
-          "footer_column_4_icon_4": "",
+          "footer_column_4_icon_4": "fa fa-youtube",
           "footer_column_4_icon_link_4": "",
           "footer_column_4_icon_5": "",
           "footer_column_4_icon_link_5": "",
