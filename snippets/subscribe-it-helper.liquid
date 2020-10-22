@@ -23,9 +23,9 @@ This snippet is auto generated and will be overwritten.
             "email_address_label": "E-Mail Adresse",
             "product_field_label": "Select product",
             "button_label": "Benachrichtigen Sie mich",
-            "body_copy": "Wir senden Ihnen eine E-Mail, sobald das Produkt wieder verf\u00FCgbar ist.",
-            "footer_copy": "Wir respektieren ihre Privatsphäre und teilen ihre E-Mail Adresse mit niemandem. ",
-            "registration_complete": "Deine Benachrichtigung wurde registriert. ",
+            "body_copy": "Wir senden Ihnen eine E-Mail, sobald das Produkt wieder lieferbar ist.",
+            "footer_copy": "Wir respektieren Ihre Privatsphäre und teilen Ihre E-Mail Adresse mit niemandem. ",
+            "registration_complete": "Ihre Benachrichtigung wurde registriert. ",
             "email_invalid": "E-Mail Adresse ist ungültig.",
             "uniqueness_of_email": "You have already registered for a notification for that item.",
             "close_label": "Schließen",
@@ -33,8 +33,9 @@ This snippet is auto generated and will be overwritten.
             "email_tab_text": "E-Mail",
             "sms_tab_text": "SMS",
             "fb_instruction_message": "Click below to receive notification on Facebook Messenger",
+            "fb_cta_button_text": "GET_THIS_IN_MESSENGER",
             "push_notification_label": "Also notify me via push notification",
-            "empty_email_phone_validation_message": "Bitte gebe eine E-Mail Adresse oder Telefonnummer ein. "
+            "empty_email_phone_validation_message": "Bitte geben Sie eine E-Mail Adresse oder Telefonnummer ein. "
         },
         "madeby_link_visible": true,
         "hide_for_product_tag": "notify-it-hidden",
@@ -137,7 +138,7 @@ This snippet is auto generated and will be overwritten.
     {% endif %}
 
     {% if customer %}
-    _SIConfig.customer = { email: {{ customer.email | json }} };
+    _SIConfig.customer = { email: {{ customer.email | json }}, phone: {{ customer.phone | json }} };
     {% endif %}
 </script>
 

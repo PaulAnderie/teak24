@@ -1087,6 +1087,18 @@
       "1492612501600": {
         "type": "typo-slideshow",
         "blocks": {
+          "1591087223336": {
+            "type": "image",
+            "settings": {
+              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Herbst01.jpg",
+              "option_vertical_align": "middle",
+              "option_align_text": "center",
+              "slide_title": "",
+              "slide_text_1": "",
+              "slide_button": "",
+              "slide_link_1": "https:\/\/teak24.de\/collections\/sale"
+            }
+          },
           "1588072045640": {
             "type": "image",
             "settings": {
@@ -1109,18 +1121,6 @@
               "slide_text_1": "",
               "slide_button": "",
               "slide_link_1": "https:\/\/teak24.de\/collections\/gartenstuehle-sessel"
-            }
-          },
-          "1591087223336": {
-            "type": "image",
-            "settings": {
-              "slideshow": "shopify:\/\/shop_images\/Teak24-Shopslider-Herbst01.jpg",
-              "option_vertical_align": "middle",
-              "option_align_text": "center",
-              "slide_title": "",
-              "slide_text_1": "",
-              "slide_button": "",
-              "slide_link_1": "https:\/\/teak24.de\/collections\/sale"
             }
           }
         },
@@ -1153,7 +1153,7 @@
           "logo": "shopify:\/\/shop_images\/Teak24-Logo-Verlauf-200px.png",
           "show_header_logo_ticky": false,
           "logo-sticky": "",
-          "header_text_phone": "0 28 21 \/ 45 02 50",
+          "header_text_phone": "02821 \/ 450 250",
           "show_header_search": true,
           "show_header_text_left": ""
         }
@@ -1317,7 +1317,7 @@
           "footer_column_4_icon_3": "fa fa-pinterest",
           "footer_column_4_icon_link_3": "https:\/\/www.pinterest.de\/teak24\/",
           "footer_column_4_icon_4": "fa fa-youtube",
-          "footer_column_4_icon_link_4": "",
+          "footer_column_4_icon_link_4": "https:\/\/www.youtube.com\/channel\/UCzub-K07S_rEea1GlDckbiA",
           "footer_column_4_icon_5": "",
           "footer_column_4_icon_link_5": "",
           "footer_column_4_icon_6": "",

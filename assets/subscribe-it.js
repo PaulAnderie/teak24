@@ -184,7 +184,7 @@ function deferBisProductPageButton (callback) {
 
                           {{#show_phone_number_field}}
                             <div id="phone-number" class="form-group {{^only_sms_enabled}}{{^show_sms_first}}hidden{{/show_sms_first}}{{/only_sms_enabled}}">
-                              <div class="col-xs-12"> <input type="tel" class="form-control input-lg" value="{{customer.phone_number}}"> </div>
+                              <div class="col-xs-12"> <input type="tel" class="form-control input-lg" value="{{customer.phone}}"> </div>
                             </div>
                           {{/show_phone_number_field}}
 
@@ -214,7 +214,7 @@ function deferBisProductPageButton (callback) {
                               </div>
                            </div>
                            <div id="fb-root"></div>
-                           <script> window.fbAsyncInit = function () { FB.init({ appId: '2440781236012932', autoLogAppEvents: true, xfbml: true, version: 'v4.0' }); afterFBInit(); }; (function () { var script = document.createElement('script'); script.src = document.location.protocol + '//connect.facebook.net/en_US/sdk.js'; script.async = true; document.getElementById('fb-root').appendChild(script); }()); function afterFBInit() { (function () { var variantsDropdown = document.getElementById("variants"); variantsDropdown.onchange = function () { reloadFBWidget(); }; }()); var reloadFBWidget = function () { var variantsDropdown = document.getElementById("variants"); var selectedIndex = variantsDropdown.selectedIndex; if (selectedIndex == null) { console.log('selected index is null.'); return; } var selectedVariantId = variantsDropdown.options[selectedIndex].value; var sendToMessengerElement = document.createElement("div"); sendToMessengerElement.setAttribute("class", "fb-send-to-messenger"); sendToMessengerElement.setAttribute("messenger_app_id", "2440781236012932"); sendToMessengerElement.setAttribute("page_id", "{{fb_page_id}}"); sendToMessengerElement.setAttribute("data-ref", selectedVariantId + '_fbd_' + '{{shop_myshopify_domain}}' + '_fbd_' + '{{product.id}}'); sendToMessengerElement.setAttribute("size", "large"); sendToMessengerElement.setAttribute("color", 'blue'); var fbShareToMessengerSubContainer = document.getElementById('fb-share-to-messenger-sub-container'); fbShareToMessengerSubContainer.innerHTML = ''; fbShareToMessengerSubContainer.appendChild(sendToMessengerElement); FB.XFBML.parse(); }; reloadFBWidget(); } </script>
+                           <script> window.fbAsyncInit = function () { FB.init({ appId: '2440781236012932', autoLogAppEvents: true, xfbml: true, version: 'v4.0' }); afterFBInit(); }; (function () { var script = document.createElement('script'); script.src = document.location.protocol + '//connect.facebook.net/en_US/sdk.js'; script.async = true; document.getElementById('fb-root').appendChild(script); }()); function afterFBInit() { (function () { var variantsDropdown = document.getElementById("variants"); variantsDropdown.onchange = function () { reloadFBWidget(); }; }()); var reloadFBWidget = function () { var variantsDropdown = document.getElementById("variants"); var selectedIndex = variantsDropdown.selectedIndex; if (selectedIndex == null) { console.log('selected index is null.'); return; } var selectedVariantId = variantsDropdown.options[selectedIndex].value; var sendToMessengerElement = document.createElement("div"); sendToMessengerElement.setAttribute("cta_text", "{{fb_cta_button_text}}"); sendToMessengerElement.setAttribute("class", "fb-send-to-messenger"); sendToMessengerElement.setAttribute("messenger_app_id", "2440781236012932"); sendToMessengerElement.setAttribute("page_id", "{{fb_page_id}}"); sendToMessengerElement.setAttribute("data-ref", selectedVariantId + '_fbd_' + '{{shop_myshopify_domain}}' + '_fbd_' + '{{product.id}}'); sendToMessengerElement.setAttribute("size", "large"); sendToMessengerElement.setAttribute("color", 'blue'); var fbShareToMessengerSubContainer = document.getElementById('fb-share-to-messenger-sub-container'); fbShareToMessengerSubContainer.innerHTML = ''; fbShareToMessengerSubContainer.appendChild(sendToMessengerElement); FB.XFBML.parse(); }; reloadFBWidget(); } </script>
                            {{/show_fb}}
 
                         </div>
@@ -1971,9 +1971,9 @@ function deferBisProductPageButton (callback) {
                 "email_address_label": "E-Mail Adresse",
                 "product_field_label": "Select product",
                 "button_label": "Benachrichtigen Sie mich",
-                "body_copy": "Wir senden Ihnen eine E-Mail, sobald das Produkt wieder verf\u00FCgbar ist.",
-                "footer_copy": "Wir respektieren ihre Privatsphäre und teilen ihre E-Mail Adresse mit niemandem. ",
-                "registration_complete": "Deine Benachrichtigung wurde registriert. ",
+                "body_copy": "Wir senden Ihnen eine E-Mail, sobald das Produkt wieder lieferbar ist.",
+                "footer_copy": "Wir respektieren Ihre Privatsphäre und teilen Ihre E-Mail Adresse mit niemandem. ",
+                "registration_complete": "Ihre Benachrichtigung wurde registriert. ",
                 "email_invalid": "E-Mail Adresse ist ungültig.",
                 "uniqueness_of_email": "You have already registered for a notification for that item.",
                 "close_label": "Schließen",
@@ -1981,8 +1981,9 @@ function deferBisProductPageButton (callback) {
                 "email_tab_text": "E-Mail",
                 "sms_tab_text": "SMS",
                 "fb_instruction_message": "Click below to receive notification on Facebook Messenger",
+                "fb_cta_button_text": "GET_THIS_IN_MESSENGER",
                 "push_notification_label": "Also notify me via push notification",
-                "empty_email_phone_validation_message": "Bitte gebe eine E-Mail Adresse oder Telefonnummer ein. "
+                "empty_email_phone_validation_message": "Bitte geben Sie eine E-Mail Adresse oder Telefonnummer ein. "
       },
         "madeby_link_visible": true,
         "hide_for_product_tag": "notify-it-hidden",
