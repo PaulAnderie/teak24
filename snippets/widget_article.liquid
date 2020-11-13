@@ -9,7 +9,7 @@
         <p class="blog_author">
           <span class="blog_author">{{'typo_blog.article.posted_in' | t }} 
             <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
-              {{ article.published_at | date: '%b %d, %Y' }}
+              {{ article.published_at | date: format: 'abbreviated_date' }}
             </time> {% if blog.comments_enabled? %}
             - <a href="{{ article.url }}#comments">
             {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}

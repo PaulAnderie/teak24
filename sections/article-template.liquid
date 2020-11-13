@@ -55,7 +55,7 @@ If a comment was just submitted and it has no blank fields, we have an extra com
       {% endif %}
       <span class="blog_author"> <i class="fa fa-calendar" ></i> {{'typo_blog.article.posted_in' | t }} 
         <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
-          {{ article.published_at | date: '%b %d, %Y' }}
+          {{ article.published_at | date: format: 'abbreviated_date' }}
         </time></span> <span> <i class="fa fa-user-o"></i>  {{'typo_blog.article.by_author' | t }} {{ article.author }} </span>
     </p> 
 
@@ -86,10 +86,10 @@ If a comment was just submitted and it has no blank fields, we have an extra com
     {% endcomment %}
     <div class="action-btn">
       {% if blog.previous_article %}
-      <span class="left">{{ '&larr; Older Post' | link_to: blog.previous_article }}</span>
+      <span class="left">{{ '&larr; Vorheriger Artikel' | link_to: blog.previous_article }}</span>
       {% endif %}
       {% if blog.next_article %}
-      <span class="right">{{ 'Newer Post &rarr;' | link_to: blog.next_article }}</span>
+      <span class="right">{{ 'Nächster Artikel &rarr;' | link_to: blog.next_article }}</span>
       {% endif %}
     </div>
     {% endif %}

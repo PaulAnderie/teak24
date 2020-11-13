@@ -51,6 +51,20 @@
                   <span class="cart-item-sku">Art.-Nr. {{ item.sku }}</span>
                   {% endif %}
                 </p>
+                <div>
+                  {% assign product = item.product %}
+                    <div class="meta specs length" {% unless product.metafields.specs.length %}style="display:none;"{% endunless %}>Länge: <span>{{ product.metafields.specs.length }}</span> cm</div>
+                    <div class="meta specs width" {% unless product.metafields.specs.width %}style="display:none;"{% endunless %}>Breite: <span>{{ product.metafields.specs.width }}</span> cm</div>
+                    <div class="meta specs depth" {% unless  product.metafields.specs.depth %}style="display:none;"{% endunless %}>Tiefe: <span>{{ product.metafields.specs.depth }}</span> cm</div>
+                    <div class="meta specs height" {% unless  product.metafields.specs.height %}style="display:none;"{% endunless  %}>Höhe: <span>{{ product.metafields.specs.height }}</span> cm</div>
+                    <div class="meta specs diameter" {% unless  product.metafields.specs.diameter %}style="display:none;"{% endunless  %}>Durchmesser: <span>{{ product.metafields.specs.diameter }}</span> cm</div>
+                    <div class="meta specs seatingheight" {% unless  product.metafields.specs.seatingheight %}style="display:none;"{% endunless  %}>Sitzhöhe: <span>{{ product.metafields.specs.seatingheight }}</span> cm</div>
+                    <div class="meta specs seatingdepth" {% unless  product.metafields.specs.seatingdepth %}style="display:none;"{% endunless  %}>Sitztiefe: <span>{{ product.metafields.specs.seatingdepth }}</span> cm</div>
+                    <div class="meta specs maxlength" {% unless  product.metafields.specs.maxlength %}style="display:none;"{% endunless  %}>Max. Ausziehlänge: <span>{{ product.metafields.specs.maxlength }}</span> cm</div>
+                    <div class="meta weight" {% unless  product.selected_or_first_available_variant.weight > 0 %}style="display:none;"{% endunless  %}>Gewicht: <span>{{product.selected_or_first_available_variant.weight | divided_by: 1000 }}</span> kg</div>
+                    <div class="meta specs form" {% unless  product.metafields.specs.form %}style="display:none;"{% endunless  %}>Form: <span>{{ product.metafields.specs.form }}</span></div>
+                    <div class="meta specs feature" {% unless  product.metafields.specs.feature %}style="display:none;"{% endunless  %}>Funktion: <span>{{ product.metafields.specs.feature }}</span></div>
+                </div>
               </td>
               <td class="qty">
                 <input type="text" size="4" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" onfocus="this.select();" class="tc item-quantity" />

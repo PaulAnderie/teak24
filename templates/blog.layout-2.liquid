@@ -35,7 +35,7 @@ You can change layouts or styles by checking if current_tags is true.
 
                 <span class="blog_author">{{'typo_blog.article.posted_in' | t }} 
                   <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">
-                    {{ article.published_at | date: '%b %d, %Y' }}
+                    {{ article.published_at | date: format: 'abbreviated_date' }}
                   </time><span> | </span> {% if blog.comments_enabled? %}
                   <a href="{{ article.url }}#comments">
                     {{ article.comments_count }} {{ article.comments_count | pluralize: 'comment','comments' }}
