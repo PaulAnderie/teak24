@@ -13,8 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="format-detection" content="telephone=no">
 
-  <title>Here's your {{ formatted_initial_value_stripped }} gift card for {{ shop.name }}!</title>
-  <meta name="description" content="Here's your gift card!">
+  <title>Dein {{ formatted_initial_value_stripped }}-Gutschein bei {{ shop.name }}!</title>
+  <meta name="description" content="Hier ist dein Gutschein!">
 
   {{ 'gift-card.css' | shopify_asset_url | stylesheet_tag }}
   {{ 'modernizr.gift-card.js' | shopify_asset_url | script_tag }}
@@ -63,15 +63,15 @@
             <div id="gift-card-inner-container">
 
               <header id="gift-card-header">
-                <h2>Here's your gift card!</h2>
+                <h2>Ein Gutschein für dich!</h2>
                 {% unless gift_card.enabled %}
-                  <span class="tag">Disabled</span>
+                  <span class="tag">Inaktiv</span>
                 {% endunless %}
                 {% if gift_card.expired and gift_card.enabled %}
-                   <span class="tag">Expired on {{ gift_card.expires_on | date: "%d/%m/%y" }}</span>
+                   <span class="tag">Abgelaufen am {{ gift_card.expires_on | date: format: 'date' }}</span>
                 {% endif %}
                 {% if gift_card.expired != true and gift_card.expires_on and gift_card.enabled %}
-                  <span class="tag light">Expires on {{ gift_card.expires_on | date: "%d/%m/%y" }}</span>
+                  <span class="tag light">Läuft am {{ gift_card.expires_on | date: format: 'date' }} ab</span>
                 {% endif %}
               </header>
 
@@ -81,11 +81,11 @@
                 <div class="corner top-right"></div>
                 <div class="corner bottom-left"></div>
                 <div id="gift-card">
-                  <img src="{{ 'gift-card/card.jpg' | shopify_asset_url }}" alt="Gift card illustration">
+                  <img src="{{ 'gift-card/card.jpg' | shopify_asset_url }}" alt="Gutscheinbild">
                   {% assign initial_value_size = formatted_initial_value | size %}
                   <div id="gift-card-amount" class="{% if initial_value_size > 6 %}medium{% endif %}">
                     {% if gift_card.balance != gift_card.initial_value %}
-                      <span class="tooltip-container"><span class="tooltip-label">{{ gift_card.balance | money }} <small>left</small></span><span class="tooltip-triangle"></span></span>
+                      <span class="tooltip-container"><span class="tooltip-label"><small>Noch</small> {{ gift_card.balance | money }} <small>verfügbar</small></span><span class="tooltip-triangle"></span></span>
                     {% endif %}
                     <strong>{{ formatted_initial_value }}</strong>
                   </div>
@@ -99,7 +99,7 @@
               </div>
 
               <div id="gift-card-instructions">
-                <p>Use this code at checkout to redeem your gift card.</p>
+                <p>Gib diesen Code bei der Bezahlung an, um den Gutschein einzulösen.</p>
               </div>
               <div id="qr-code"></div>
               <script>
@@ -110,8 +110,8 @@
                 });
               </script>
               <div id="gift-card-actions">
-                <a href="{{ shop.url }}" class="btn center" target="_blank">Start Shopping</a>
-                <a href="#" class="action-link left" onclick="window.print();"><i class="ico-16 print"></i>Print</a>
+                <a href="{{ shop.url }}" class="btn center" target="_blank">Jetzt einkaufen</a>
+                <a href="#" class="action-link left" onclick="window.print();"><i class="ico-16 print"></i>Drucken</a>
               </div>
             </div>
           </div>
@@ -119,7 +119,7 @@
 
       <footer role="contentinfo">
         {% if gift_card.pass_url %}
-          <a href="{{ gift_card.pass_url }}"><img id="apple-wallet-badge" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Add To Apple Wallet"></a>
+          <a href="{{ gift_card.pass_url }}"><img id="apple-wallet-badge" src="{{ 'gift-card/add-to-apple-wallet.svg' | shopify_asset_url }}" width="120" height="40" alt="Zu Apple Wallet hinzufügen"></a>
         {% endif %}
       </footer>
 
