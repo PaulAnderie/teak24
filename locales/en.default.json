@@ -32,7 +32,7 @@
       "name": "Product",
       "qty": "Qty",
       "price": "Price",
-      "total_price": "Total price",
+      "total_price": "Total price (incl. VAT)",
       "remove": "Remove",
       "comments": "Note Additional comments"
     }

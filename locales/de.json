@@ -144,7 +144,7 @@
       "name": "Produkt",
       "qty": "Anzahl",
       "price": "Preis",
-      "total_price": "Gesamtpreis",
+      "total_price": "Gesamtpreis (inkl. MwSt.)",
       "remove": "Entfernen",
       "comments": "Kommentare"
     }
