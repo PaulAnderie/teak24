@@ -1357,8 +1357,7 @@
         "type": "article-template",
         "settings": {
           "display_blog_share": true,
-          "display_blog_banner": true,
-          "blog_banner_image": ""
+          "display_blog_banner": false
         }
       },
       "1500094757739": {
@@ -1552,7 +1551,7 @@
           "color_bg": "#ffffff",
           "footer_newsletter_title": "10 Euro Gutschein für Ihre erste Bestellung",
           "footer_newsletter_content": "Newsletter abonnieren und 10 Euro Gutschein sichern.",
-          "mailing_list_form_action": "http:\/\/eepurl.com\/dG-7K9?EMAIL=*|EMAIL|*"
+          "mailing_list_form_action": "https:\/\/teak24.us18.list-manage.com\/subscribe\/post?u=b9d407656247ce8111e3cd9f4&amp;id=52c9ca96b0"
         }
       },
       "announcement-bar": {
