@@ -9,6 +9,11 @@
   <!-- Basic page needs ================================================== -->
   <meta charset="utf-8">
 
+  <!-- fix Dein → Ihr -->
+  {% if page_title == "Dein Warenkorb" %}
+    {% assign page_title = "Ihr Warenkorb" %}
+  {% endif %}
+
   <!-- Title and description ================================================== -->
   <title>
     {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
