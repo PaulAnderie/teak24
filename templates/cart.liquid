@@ -52,18 +52,25 @@
                   {% endif %}
                 </p>
                 <div>
-                  {% assign product = item.product %}
-                    <div class="meta specs length" {% unless product.metafields.specs.length %}style="display:none;"{% endunless %}>Länge: <span>{{ product.metafields.specs.length }}</span> cm</div>
-                    <div class="meta specs width" {% unless product.metafields.specs.width %}style="display:none;"{% endunless %}>Breite: <span>{{ product.metafields.specs.width }}</span> cm</div>
-                    <div class="meta specs depth" {% unless  product.metafields.specs.depth %}style="display:none;"{% endunless %}>Tiefe: <span>{{ product.metafields.specs.depth }}</span> cm</div>
-                    <div class="meta specs height" {% unless  product.metafields.specs.height %}style="display:none;"{% endunless  %}>Höhe: <span>{{ product.metafields.specs.height }}</span> cm</div>
-                    <div class="meta specs diameter" {% unless  product.metafields.specs.diameter %}style="display:none;"{% endunless  %}>Durchmesser: <span>{{ product.metafields.specs.diameter }}</span> cm</div>
-                    <div class="meta specs seatingheight" {% unless  product.metafields.specs.seatingheight %}style="display:none;"{% endunless  %}>Sitzhöhe: <span>{{ product.metafields.specs.seatingheight }}</span> cm</div>
-                    <div class="meta specs seatingdepth" {% unless  product.metafields.specs.seatingdepth %}style="display:none;"{% endunless  %}>Sitztiefe: <span>{{ product.metafields.specs.seatingdepth }}</span> cm</div>
-                    <div class="meta specs maxlength" {% unless  product.metafields.specs.maxlength %}style="display:none;"{% endunless  %}>Max. Ausziehlänge: <span>{{ product.metafields.specs.maxlength }}</span> cm</div>
-                    <div class="meta weight" {% unless  product.selected_or_first_available_variant.weight > 0 %}style="display:none;"{% endunless  %}>Gewicht: <span>{{product.selected_or_first_available_variant.weight | divided_by: 1000 }}</span> kg</div>
-                    <div class="meta specs form" {% unless  product.metafields.specs.form %}style="display:none;"{% endunless  %}>Form: <span>{{ product.metafields.specs.form }}</span></div>
-                    <div class="meta specs feature" {% unless  product.metafields.specs.feature %}style="display:none;"{% endunless  %}>Funktion: <span>{{ product.metafields.specs.feature }}</span></div>
+                  {% assign productspecs = item.product.metafields.specs %}
+                  {% if item.product.variants.size > 1 %}
+                    {% assign productspecs = item.variant.metafields.specs %}
+                  {% endif %}
+                  {% assign productweight = item.variant.weight %}
+
+                    <div class="meta specs summary" {% unless productspecs.summary %}style="display:none;"{% endunless %}>{{ productspecs.summary }}</div>
+
+                    <div class="meta specs length" {% unless productspecs.length %}style="display:none;"{% endunless %}>Länge: <span>{{ productspecs.length }}</span> cm</div>
+                    <div class="meta specs width" {% unless productspecs.width %}style="display:none;"{% endunless %}>Breite: <span>{{ productspecs.width }}</span> cm</div>
+                    <div class="meta specs depth" {% unless  productspecs.depth %}style="display:none;"{% endunless %}>Tiefe: <span>{{ productspecs.depth }}</span> cm</div>
+                    <div class="meta specs height" {% unless  productspecs.height %}style="display:none;"{% endunless  %}>Höhe: <span>{{ productspecs.height }}</span> cm</div>
+                    <div class="meta specs diameter" {% unless  productspecs.diameter %}style="display:none;"{% endunless  %}>Durchmesser: <span>{{ productspecs.diameter }}</span> cm</div>
+                    <div class="meta specs seatingheight" {% unless  productspecs.seatingheight %}style="display:none;"{% endunless  %}>Sitzhöhe: <span>{{ productspecs.seatingheight }}</span> cm</div>
+                    <div class="meta specs seatingdepth" {% unless  productspecs.seatingdepth %}style="display:none;"{% endunless  %}>Sitztiefe: <span>{{ productspecs.seatingdepth }}</span> cm</div>
+                    <div class="meta specs maxlength" {% unless  productspecs.maxlength %}style="display:none;"{% endunless  %}>Max. Ausziehlänge: <span>{{ productspecs.maxlength }}</span> cm</div>
+                    <div class="meta weight" {% unless  productweight > 0 %}style="display:none;"{% endunless  %}>Gewicht: <span>{{productweight | divided_by: 1000 }}</span> kg</div>
+                    <div class="meta specs form" {% unless  productspecs.form %}style="display:none;"{% endunless  %}>Form: <span>{{ productspecs.form }}</span></div>
+                    <div class="meta specs feature" {% unless  productspecs.feature %}style="display:none;"{% endunless  %}>Funktion: <span>{{ productspecs.feature }}</span></div>
                 </div>
               </td>
               <td class="qty">

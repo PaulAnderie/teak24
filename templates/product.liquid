@@ -224,6 +224,8 @@
 
 
                             <div class="description-meta">
+                                <div class="meta specs summary" {% unless product.metafields.specs.summary %}style="display:none;"{% endunless %}><span>{{ product.metafields.specs.summary }}</span></div>
+
                                 <div class="meta specs length" {% unless product.metafields.specs.length %}style="display:none;"{% endunless %}>Länge: <span>{{ product.metafields.specs.length }}</span> cm</div>
                                 <div class="meta specs width" {% unless product.metafields.specs.width %}style="display:none;"{% endunless %}>Breite: <span>{{ product.metafields.specs.width }}</span> cm</div>
                                 <div class="meta specs depth" {% unless  product.metafields.specs.depth %}style="display:none;"{% endunless %}>Tiefe: <span>{{ product.metafields.specs.depth }}</span> cm</div>
@@ -618,7 +620,7 @@ var selectCallback = function(variant, selector) {
             }
 
         // SPECS
-        var attrs = ["length", "width", "depth", "height", "seatingheight", "seatingdepth", "maxlength", "diameter", "form", "feature"];
+        var attrs = ["summary", "length", "width", "depth", "height", "seatingheight", "seatingdepth", "maxlength", "diameter", "form", "feature"];
         for (var i in attrs) {
             var attr = attrs[i];
             if(myMeta.specs[attr]) {

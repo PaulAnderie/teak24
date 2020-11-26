@@ -207,6 +207,10 @@
 <h2 style="font-size: 18px; font-weight: 600; text-transform:uppercase;">Wichtige Produktinformationen</h2>
                                                         
                                                               
+{% if product.metafields.specs.summary %}
+    <div>{{ product.metafields.specs.summary }}</div>
+{% endif %}
+
 {% if product.metafields.specs.length %}
     <div>Länge: {{ product.metafields.specs.length }} cm</div>
 {% endif %}
