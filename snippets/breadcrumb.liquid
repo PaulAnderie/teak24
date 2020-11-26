@@ -16,7 +16,7 @@
   {% endif %}
   
   <span class="icon">/</span>
-  <strong>{{ product.title }}</strong>
+  <strong class="breadcrumb_product_title">{{ product.title }}</strong>
   
   {% elsif template contains 'collection' and collection.handle %}
   
@@ -28,7 +28,7 @@
   <strong>{{ current_tags.first }}</strong>
   {% else %}
   <span class="icon">/</span>
-  <strong>{{ collection.title }}</strong>
+  <strong class="breadcrumb_collection_title">{{ collection.title }}</strong>
   {% endif %}
 
   {% elsif template == 'article' %}
@@ -36,7 +36,7 @@
   <span class="icon">/</span>
   {{ blog.title | link_to: blog.url }}
   <span class="icon">/</span>
-  <strong>{{ article.title }}</strong>
+  <strong class="breadcrumb_article_title">{{ article.title }}</strong>
   
   {% elsif template contains 'page' %}
 
@@ -45,7 +45,7 @@
 
   {% else %}
   <span class="icon">/</span>
-  <strong>{{ page_title }}</strong>
+  <strong class="breadcrumb_page_title">{{ page_title }}</strong>
   {% endif %}
 </div>
 {% endunless %}
